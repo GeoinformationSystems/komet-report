@@ -1,0 +1,267 @@
+{
+  "created": "2026-01-22T11:30:11.762572Z",
+  "last_updated": "2026-01-22T11:32:25.298829Z",
+  "observations": [
+    {
+      "timestamp": "2026-01-22T11:30:13.555539Z",
+      "last_seen": "2026-01-22T11:30:13.555539Z",
+      "metric": "wikidata_p1343_scholarly_count",
+      "value": 14,
+      "source": "wikidata",
+      "notes": "P1343 rarely used for scholarly articles - not primary tracking method"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:13.697826Z",
+      "last_seen": "2026-01-22T11:31:13.697826Z",
+      "metric": "wikidata_komet_provenance_count",
+      "value": 0,
+      "source": "wikidata",
+      "notes": "Items with KOMET/OPTIMETA in P1343 source"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:14.327320Z",
+      "last_seen": "2026-01-22T11:31:14.327320Z",
+      "metric": "wikidata_journal_Q122948152_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:14.327346Z",
+      "last_seen": "2026-01-22T11:31:14.327346Z",
+      "metric": "wikidata_journal_Q122948152_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:15.934039Z",
+      "last_seen": "2026-01-22T11:31:15.934039Z",
+      "metric": "wikidata_journal_Q108455809_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:15.934062Z",
+      "last_seen": "2026-01-22T11:31:15.934062Z",
+      "metric": "wikidata_journal_Q108455809_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:17.438636Z",
+      "last_seen": "2026-01-22T11:31:17.438636Z",
+      "metric": "wikidata_journal_Q1678617_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:17.438648Z",
+      "last_seen": "2026-01-22T11:31:17.438648Z",
+      "metric": "wikidata_journal_Q1678617_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:20.734953Z",
+      "last_seen": "2026-01-22T11:31:20.734953Z",
+      "metric": "wikidata_journal_Q1455822_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:20.734993Z",
+      "last_seen": "2026-01-22T11:31:20.734993Z",
+      "metric": "wikidata_journal_Q1455822_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:22.512693Z",
+      "last_seen": "2026-01-22T11:31:22.512693Z",
+      "metric": "wikidata_journal_Q15756080_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:22.512718Z",
+      "last_seen": "2026-01-22T11:31:22.512718Z",
+      "metric": "wikidata_journal_Q15756080_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:24.282470Z",
+      "last_seen": "2026-01-22T11:31:24.282470Z",
+      "metric": "wikidata_journal_Q15764825_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:31:24.282495Z",
+      "last_seen": "2026-01-22T11:31:24.282495Z",
+      "metric": "wikidata_journal_Q15764825_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:11.038492Z",
+      "last_seen": "2026-01-22T11:32:11.038492Z",
+      "metric": "wikidata_journal_Q101247086_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:11.038551Z",
+      "last_seen": "2026-01-22T11:32:11.038551Z",
+      "metric": "wikidata_journal_Q101247086_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:12.713622Z",
+      "last_seen": "2026-01-22T11:32:12.713622Z",
+      "metric": "wikidata_journal_Q105103105_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:12.713656Z",
+      "last_seen": "2026-01-22T11:32:12.713656Z",
+      "metric": "wikidata_journal_Q105103105_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:14.209286Z",
+      "last_seen": "2026-01-22T11:32:14.209286Z",
+      "metric": "wikidata_journal_Q46478422_articles",
+      "value": 28,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:14.209313Z",
+      "last_seen": "2026-01-22T11:32:14.209313Z",
+      "metric": "wikidata_journal_Q46478422_citations_p2860",
+      "value": 2,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:16.107883Z",
+      "last_seen": "2026-01-22T11:32:16.107883Z",
+      "metric": "wikidata_journal_Q96332444_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:16.107917Z",
+      "last_seen": "2026-01-22T11:32:16.107917Z",
+      "metric": "wikidata_journal_Q96332444_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:17.578347Z",
+      "last_seen": "2026-01-22T11:32:17.578347Z",
+      "metric": "wikidata_journal_Q50817185_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:17.578384Z",
+      "last_seen": "2026-01-22T11:32:17.578384Z",
+      "metric": "wikidata_journal_Q50817185_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:19.099875Z",
+      "last_seen": "2026-01-22T11:32:19.099875Z",
+      "metric": "wikidata_journal_Q636752_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:19.099908Z",
+      "last_seen": "2026-01-22T11:32:19.099908Z",
+      "metric": "wikidata_journal_Q636752_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:20.579608Z",
+      "last_seen": "2026-01-22T11:32:20.579608Z",
+      "metric": "wikidata_journal_Q50814880_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:20.579637Z",
+      "last_seen": "2026-01-22T11:32:20.579637Z",
+      "metric": "wikidata_journal_Q50814880_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:22.167938Z",
+      "last_seen": "2026-01-22T11:32:22.167938Z",
+      "metric": "wikidata_journal_Q111049844_articles",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:22.167955Z",
+      "last_seen": "2026-01-22T11:32:22.167955Z",
+      "metric": "wikidata_journal_Q111049844_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:23.699836Z",
+      "last_seen": "2026-01-22T11:32:23.699836Z",
+      "metric": "wikidata_journal_Q107074231_articles",
+      "value": 14,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:23.699861Z",
+      "last_seen": "2026-01-22T11:32:23.699861Z",
+      "metric": "wikidata_journal_Q107074231_citations_p2860",
+      "value": 0,
+      "source": "wikidata"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:25.206277Z",
+      "last_seen": "2026-01-22T11:32:25.206277Z",
+      "metric": "opencitations_total_issues",
+      "value": 16,
+      "source": "opencitations"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:25.232038Z",
+      "last_seen": "2026-01-22T11:32:25.232038Z",
+      "metric": "opencitations_komet_issues",
+      "value": 5,
+      "source": "opencitations"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:25.247202Z",
+      "last_seen": "2026-01-22T11:32:25.247202Z",
+      "metric": "opencitations_komet_done",
+      "value": 0,
+      "source": "opencitations"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:25.247292Z",
+      "last_seen": "2026-01-22T11:32:25.247292Z",
+      "metric": "opencitations_komet_pending",
+      "value": 0,
+      "source": "opencitations"
+    },
+    {
+      "timestamp": "2026-01-22T11:32:25.247357Z",
+      "last_seen": "2026-01-22T11:32:25.247357Z",
+      "metric": "opencitations_komet_invalid",
+      "value": 4,
+      "source": "opencitations"
+    }
+  ]
+}

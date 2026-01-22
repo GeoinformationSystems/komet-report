@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:query.wikidata.org)",
+      "WebFetch(domain:www.wikidata.org)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:projects.tib.eu)",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

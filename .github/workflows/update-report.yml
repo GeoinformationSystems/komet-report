@@ -1,0 +1,65 @@
+name: Update KOMET Report
+
+on:
+  schedule:
+    # Run every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub UI
+
+jobs:
+  update-report:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert requests
+
+      - name: Execute notebook
+        run: |
+          jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            komet_evaluation.ipynb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate HTML report
+        run: |
+          jupyter nbconvert \
+            --to html \
+            --no-input \
+            --output-dir=docs \
+            --output=index \
+            komet_evaluation.ipynb
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet komet_timeline.json || echo "timeline_changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet komet_report_data.json || echo "report_changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet docs/index.html || echo "html_changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.timeline_changed == 'true' || steps.changes.outputs.report_changed == 'true' || steps.changes.outputs.html_changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add komet_timeline.json komet_report_data.json komet_evaluation.ipynb docs/index.html
+          git commit -m "Update KOMET report data ($(date -u +%Y-%m-%d))"
+          git push

@@ -1,0 +1,208 @@
+{
+  "report_timestamp": "2026-01-22T11:32:25.290329Z",
+  "platform_priority": {
+    "primary": "OpenCitations",
+    "secondary": "Wikidata (monitoring only)",
+    "planned": "OpenAIRE"
+  },
+  "wikidata": {
+    "p1343_scholarly_count": 14,
+    "p1343_limitation_note": "P1343 rarely used for scholarly articles (~14 items); not suitable for tracking",
+    "komet_provenance_items": 0,
+    "partner_journals_tracked": 15,
+    "partner_journals_total_articles": 42,
+    "partner_journals_total_citations_p2860": 2
+  },
+  "opencitations": {
+    "total_crowdsourcing_issues": 15,
+    "komet_contributions": 4,
+    "komet_successful": 0,
+    "komet_pending": 0,
+    "komet_invalid": 4,
+    "komet_contributors": [
+      "GaziYucel"
+    ]
+  },
+  "partner_journals": [
+    {
+      "name": "Journal of South Asian Linguistics",
+      "partner": "KIM Universität Konstanz",
+      "qid": "Q122948152",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 0
+      }
+    },
+    {
+      "name": "Free Neuropathology",
+      "partner": "WWU Münster",
+      "qid": "Q108455809",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 0
+      }
+    },
+    {
+      "name": "Jahrbuch für Christliche Sozialwissenschaften",
+      "partner": "WWU Münster",
+      "qid": "Q1678617",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 850
+      }
+    },
+    {
+      "name": "Journal für Kulturpflanzen",
+      "partner": "Julius Kühn-Institut",
+      "qid": "Q1455822",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 558
+      }
+    },
+    {
+      "name": "VITIS - Journal of Grapevine Research",
+      "partner": "Julius Kühn-Institut",
+      "qid": "Q15756080",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 1762
+      }
+    },
+    {
+      "name": "Journal of Applied Botany and Food Quality",
+      "partner": "Julius Kühn-Institut",
+      "qid": "Q15764825",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 3,
+        "wikidata_with_citations": 0,
+        "openalex": 419
+      }
+    },
+    {
+      "name": "Francia-Recensio",
+      "partner": "heiJOURNALS Heidelberg",
+      "qid": "Q101247086",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 1,
+        "wikidata_with_citations": 0,
+        "openalex": 1096
+      }
+    },
+    {
+      "name": "Heidelberger Beiträge zum Finanz- und Steuerrecht",
+      "partner": "heiJOURNALS Heidelberg",
+      "qid": "Q105103105",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 0
+      }
+    },
+    {
+      "name": "Informationspraxis",
+      "partner": "heiJOURNALS Heidelberg",
+      "qid": "Q46478422",
+      "wikidata_articles": 28,
+      "wikidata_citations_p2860": 2,
+      "baseline_2022": {
+        "wikidata_articles": 55,
+        "wikidata_with_citations": 3,
+        "openalex": 43
+      }
+    },
+    {
+      "name": "International Journal of Dream Research",
+      "partner": "heiJOURNALS Heidelberg",
+      "qid": "Q96332444",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 352
+      }
+    },
+    {
+      "name": "Journal of Dynamic Decision Making",
+      "partner": "heiJOURNALS Heidelberg",
+      "qid": "Q50817185",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 18
+      }
+    },
+    {
+      "name": "Archäologischer Anzeiger",
+      "partner": "Deutsches Archäologisches Institut",
+      "qid": "Q636752",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 0,
+        "wikidata_with_citations": 0,
+        "openalex": 224
+      }
+    },
+    {
+      "name": "Journal of Spatial Information Science",
+      "partner": "JOSIS / TU Dresden",
+      "qid": "Q50814880",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 25,
+        "wikidata_with_citations": 0,
+        "openalex": 201
+      }
+    },
+    {
+      "name": "Cognitio",
+      "partner": "ZHB Luzern",
+      "qid": "Q111049844",
+      "wikidata_articles": 0,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 31,
+        "wikidata_with_citations": 0,
+        "openalex": 0
+      }
+    },
+    {
+      "name": "itdb - inter- und transdisziplinäre Bildung",
+      "partner": "ZHB Luzern",
+      "qid": "Q107074231",
+      "wikidata_articles": 14,
+      "wikidata_citations_p2860": 0,
+      "baseline_2022": {
+        "wikidata_articles": 13,
+        "wikidata_with_citations": 0,
+        "openalex": 0
+      }
+    }
+  ]
+}
