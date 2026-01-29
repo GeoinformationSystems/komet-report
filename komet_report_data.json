@@ -1,5 +1,5 @@
 {
-  "report_timestamp": "2026-01-22T11:32:25.290329Z",
+  "report_timestamp": "2026-01-22T16:30:29.176801Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
@@ -7,7 +7,7 @@
   },
   "wikidata": {
     "p1343_scholarly_count": 14,
-    "p1343_limitation_note": "P1343 rarely used for scholarly articles (~14 items); not suitable for tracking",
+    "p1343_limitation_note": "P1343 rarely used for scholarly articles; not suitable for tracking",
     "komet_provenance_items": 0,
     "partner_journals_tracked": 15,
     "partner_journals_total_articles": 42,

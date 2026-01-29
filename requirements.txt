@@ -1,0 +1,7 @@
+# KOMET Report dependencies
+requests
+jupyter
+nbconvert
+pandas
+itables
+matplotlib

@@ -20,11 +20,11 @@ WIKIDATA_SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 GITHUB_API_BASE = "https://api.github.com"
 OPENCITATIONS_REPO = "opencitations/crowdsourcing"
 
-# Known KOMET contributors (GitHub handles)
-# Add more handles as team members are identified
+# GitHub handles associated with KOMET-developed software deposits
+# The KOMET Citations Plugin automatically creates issues using these accounts
 KOMET_CONTRIBUTORS = [
-    "GaziYucel",  # Gazi Yuecel, TIB - OPTIMETA/KOMET developer
-    # Add more KOMET team GitHub handles here
+    "GaziYucel",  # Gazi Yuecel, TIB - KOMET plugin developer
+    # Add more GitHub handles associated with KOMET software here
 ]
 
 # User-Agent for API requests (required by Wikidata)
@@ -37,8 +37,8 @@ HEADERS = {
 TIMELINE_LOG_FILE = "komet_timeline.json"
 
 # =============================================================================
-# OPTIMETA/KOMET Collaboration Partners
-# Source: https://projects.tib.eu/optimeta/en/
+# KOMET Collaboration Partners
+# Source: https://projects.tib.eu/optimeta/en/ (from related OPTIMETA project)
 # Data from: "Journals der Partner" document (2022-01-26)
 # =============================================================================
 
@@ -329,14 +329,14 @@ def get_scholarly_work_types(limit: int = 30) -> List[Dict]:
 
 def search_komet_provenance_wikidata() -> List[Dict]:
     """
-    Search for Wikidata items that reference KOMET or OPTIMETA as source.
-    Checks P1343 values for mentions of these projects.
+    Search for Wikidata items that reference KOMET as source.
+    Checks P1343 values for mentions of the project.
     """
     query = """
     SELECT ?item ?itemLabel ?source ?sourceLabel WHERE {
       ?item wdt:P1343 ?source .
       ?source rdfs:label ?sourceLabel .
-      FILTER(CONTAINS(LCASE(?sourceLabel), "komet") || CONTAINS(LCASE(?sourceLabel), "optimeta"))
+      FILTER(CONTAINS(LCASE(?sourceLabel), "komet"))
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
     }
     LIMIT 100
@@ -616,104 +616,222 @@ def get_journal_stats_wikidata(journal_qid: str) -> Dict[str, Any]:
 
 
 # =============================================================================
-# Timeline Logging Functions
+# Timeline Logging Functions (v2.0 - Hierarchical Format)
 # =============================================================================
 
 def load_timeline(filepath: str = TIMELINE_LOG_FILE) -> Dict[str, Any]:
     """
     Load the timeline log file. Creates empty structure if not exists.
+    Uses v2.0 hierarchical format with grouped metrics and time series.
     """
     try:
         with open(filepath, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+            # Check for v2.0 format
+            if "metadata" in data and "metrics" in data:
+                return data
+            # Migrate v1.0 format (not implemented - start fresh)
+            return _create_empty_timeline()
     except FileNotFoundError:
-        return {
+        return _create_empty_timeline()
+
+
+def _create_empty_timeline() -> Dict[str, Any]:
+    """Create empty v2.0 timeline structure."""
+    return {
+        "metadata": {
             "created": format_timestamp(),
             "last_updated": None,
-            "observations": []
+            "version": "2.0",
+            "description": "KOMET project evaluation metrics timeline"
+        },
+        "metrics": {
+            "wikidata": {
+                "description": "Wikidata scholarly graph metrics",
+                "journals": {
+                    "description": "Partner journal statistics from Wikidata"
+                }
+            },
+            "opencitations": {
+                "description": "OpenCitations crowdsourcing metrics"
+            }
         }
+    }
 
 
 def save_timeline(timeline: Dict[str, Any], filepath: str = TIMELINE_LOG_FILE) -> None:
-    """
-    Save the timeline log file.
-    """
-    timeline["last_updated"] = format_timestamp()
+    """Save the timeline log file."""
+    timeline["metadata"]["last_updated"] = format_timestamp()
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(timeline, f, indent=2, ensure_ascii=False, default=str)
 
 
 def add_observation(
     timeline: Dict[str, Any],
-    metric_name: str,
+    metric_path: str,
     value: Any,
     source: str,
-    notes: Optional[str] = None
+    notes: Optional[str] = None,
+    metric_name: Optional[str] = None,
+    metric_description: Optional[str] = None
 ) -> bool:
     """
-    Add an observation to the timeline.
+    Add an observation to the timeline using hierarchical path.
 
-    Only adds a new entry if the value has changed from the last observation
-    for this metric. If value is the same, updates the timestamp of the
-    existing observation.
+    Only adds a new entry if the value has changed from the last observation.
 
     Args:
         timeline: The timeline dict to update
-        metric_name: Name of the metric (e.g., "wikidata_p1343_count")
+        metric_path: Dot-separated path (e.g., "wikidata.p1343_scholarly_count"
+                     or "wikidata.journals.Q123456.articles")
         value: The observed value
         source: Data source (e.g., "wikidata", "opencitations")
-        notes: Optional notes about this observation
+        notes: Optional notes (stored at metric level, not per observation)
+        metric_name: Human-readable metric name (for new metrics)
+        metric_description: Description (for new metrics)
 
     Returns:
-        True if a new entry was added, False if only timestamp updated
+        True if a new entry was added, False if value unchanged
     """
     timestamp = format_timestamp()
+    parts = metric_path.split(".")
 
-    # Find the most recent observation for this metric
-    recent = None
-    for obs in reversed(timeline["observations"]):
-        if obs["metric"] == metric_name:
-            recent = obs
-            break
+    # Navigate/create path to metric
+    current = timeline["metrics"]
+    for i, part in enumerate(parts[:-1]):
+        if part not in current:
+            current[part] = {}
+        current = current[part]
 
-    if recent and recent["value"] == value:
-        # Value unchanged - just update the timestamp
-        recent["last_seen"] = timestamp
-        return False
-    else:
-        # New value - add new observation
-        observation = {
-            "timestamp": timestamp,
-            "last_seen": timestamp,
-            "metric": metric_name,
-            "value": value,
-            "source": source
+    metric_key = parts[-1]
+
+    # Create metric if it doesn't exist
+    if metric_key not in current:
+        current[metric_key] = {
+            "series": []
         }
+        if metric_name:
+            current[metric_key]["name"] = metric_name
+        if metric_description:
+            current[metric_key]["description"] = metric_description
         if notes:
-            observation["notes"] = notes
-        timeline["observations"].append(observation)
-        return True
+            current[metric_key]["notes"] = notes
+        current[metric_key]["unit"] = "count"
+
+    metric = current[metric_key]
+    series = metric.get("series", [])
+
+    # Check if value changed
+    if series and series[-1]["v"] == value:
+        return False
+
+    # Add new observation
+    series.append({"t": timestamp, "v": value})
+    metric["series"] = series
+    return True
 
 
-def get_metric_history(timeline: Dict[str, Any], metric_name: str) -> List[Dict]:
+def add_journal_observation(
+    timeline: Dict[str, Any],
+    qid: str,
+    metric_type: str,
+    value: Any,
+    journal_name: Optional[str] = None,
+    partner: Optional[str] = None
+) -> bool:
     """
-    Get all observations for a specific metric.
+    Add an observation for a partner journal.
+
+    Args:
+        timeline: The timeline dict
+        qid: Wikidata QID (e.g., "Q123456")
+        metric_type: "articles" or "citations_p2860"
+        value: The observed value
+        journal_name: Journal name (for new entries)
+        partner: Partner organization name (for new entries)
+
+    Returns:
+        True if new entry added, False if unchanged
     """
-    return [
-        obs for obs in timeline["observations"]
-        if obs["metric"] == metric_name
-    ]
+    journals = timeline["metrics"]["wikidata"].setdefault("journals", {
+        "description": "Partner journal statistics from Wikidata"
+    })
+
+    # Create journal entry if needed
+    if qid not in journals or not isinstance(journals[qid], dict):
+        journals[qid] = {}
+
+    journal = journals[qid]
+    if journal_name and "name" not in journal:
+        journal["name"] = journal_name
+    if partner and "partner" not in journal:
+        journal["partner"] = partner
+
+    # Create metric type if needed
+    if metric_type not in journal:
+        journal[metric_type] = {"series": []}
+
+    series = journal[metric_type].get("series", [])
+
+    # Check if value changed
+    if series and series[-1]["v"] == value:
+        return False
+
+    timestamp = format_timestamp()
+    series.append({"t": timestamp, "v": value})
+    journal[metric_type]["series"] = series
+    return True
 
 
-def get_latest_metrics(timeline: Dict[str, Any]) -> Dict[str, Any]:
+def get_metric_series(timeline: Dict[str, Any], metric_path: str) -> List[Dict]:
     """
-    Get the most recent value for each metric.
+    Get time series for a specific metric.
+
+    Args:
+        metric_path: Dot-separated path (e.g., "wikidata.p1343_scholarly_count")
+
+    Returns:
+        List of {t, v} observations
+    """
+    parts = metric_path.split(".")
+    current = timeline["metrics"]
+
+    for part in parts:
+        if part not in current:
+            return []
+        current = current[part]
+
+    return current.get("series", [])
+
+
+def get_latest_value(timeline: Dict[str, Any], metric_path: str) -> Optional[Any]:
+    """Get the most recent value for a metric."""
+    series = get_metric_series(timeline, metric_path)
+    return series[-1]["v"] if series else None
+
+
+def get_all_latest_metrics(timeline: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Get the most recent value for all metrics (flattened view).
     """
     latest = {}
-    for obs in timeline["observations"]:
-        metric = obs["metric"]
-        if metric not in latest or obs["timestamp"] > latest[metric]["timestamp"]:
-            latest[metric] = obs
+
+    def collect_metrics(obj: Dict, path: str = ""):
+        for key, value in obj.items():
+            if key in ("description", "name", "notes", "unit", "partner"):
+                continue
+            current_path = f"{path}.{key}" if path else key
+            if isinstance(value, dict):
+                if "series" in value and value["series"]:
+                    latest[current_path] = {
+                        "value": value["series"][-1]["v"],
+                        "timestamp": value["series"][-1]["t"],
+                        "name": value.get("name", key)
+                    }
+                else:
+                    collect_metrics(value, current_path)
+
+    collect_metrics(timeline["metrics"])
     return latest
 
 

@@ -1,267 +1,405 @@
 {
-  "created": "2026-01-22T11:30:11.762572Z",
-  "last_updated": "2026-01-22T11:32:25.298829Z",
-  "observations": [
-    {
-      "timestamp": "2026-01-22T11:30:13.555539Z",
-      "last_seen": "2026-01-22T11:30:13.555539Z",
-      "metric": "wikidata_p1343_scholarly_count",
-      "value": 14,
-      "source": "wikidata",
-      "notes": "P1343 rarely used for scholarly articles - not primary tracking method"
+  "metadata": {
+    "created": "2026-01-22T11:30:11.762572Z",
+    "last_updated": "2026-01-22T16:30:29.176830Z",
+    "version": "2.0",
+    "description": "KOMET project evaluation metrics timeline"
+  },
+  "metrics": {
+    "wikidata": {
+      "description": "Wikidata scholarly graph metrics",
+      "p1343_scholarly_count": {
+        "name": "P1343 Scholarly Articles",
+        "description": "Scholarly articles with 'described by source' property",
+        "unit": "count",
+        "notes": "P1343 rarely used for scholarly articles - not primary tracking method",
+        "series": [
+          {
+            "t": "2026-01-22T11:30:13Z",
+            "v": 14
+          }
+        ]
+      },
+      "komet_provenance_count": {
+        "name": "KOMET Provenance Items",
+        "description": "Wikidata items with KOMET as source",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:31:13Z",
+            "v": 0
+          }
+        ]
+      },
+      "journals": {
+        "description": "Partner journal statistics from Wikidata",
+        "Q122948152": {
+          "name": "Journal of South Asian Linguistics",
+          "partner": "KIM Universität Konstanz",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:14Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:14Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q108455809": {
+          "name": "Free Neuropathology",
+          "partner": "WWU Münster",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:15Z",
+                "v": 0
+              },
+              {
+                "t": "2026-01-22T14:05:18.482694Z",
+                "v": null
+              },
+              {
+                "t": "2026-01-22T15:53:46.374578Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:15Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q1678617": {
+          "name": "Jahrbuch für Christliche Sozialwissenschaften",
+          "partner": "WWU Münster",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:17Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:17Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q1455822": {
+          "name": "Journal für Kulturpflanzen",
+          "partner": "Julius Kühn-Institut",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:20Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:20Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q15756080": {
+          "name": "VITIS - Journal of Grapevine Research",
+          "partner": "Julius Kühn-Institut",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:22Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:22Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q15764825": {
+          "name": "Journal of Applied Botany and Food Quality",
+          "partner": "Julius Kühn-Institut",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:24Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:31:24Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q101247086": {
+          "name": "Francia-Recensio",
+          "partner": "heiJOURNALS Heidelberg",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:11Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:11Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q105103105": {
+          "name": "Heidelberger Beiträge zum Finanz- und Steuerrecht",
+          "partner": "heiJOURNALS Heidelberg",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:12Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:12Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q46478422": {
+          "name": "Informationspraxis",
+          "partner": "heiJOURNALS Heidelberg",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:14Z",
+                "v": 28
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:14Z",
+                "v": 2
+              }
+            ]
+          }
+        },
+        "Q96332444": {
+          "name": "International Journal of Dream Research",
+          "partner": "heiJOURNALS Heidelberg",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:16Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:16Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q50817185": {
+          "name": "Journal of Dynamic Decision Making",
+          "partner": "heiJOURNALS Heidelberg",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:17Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:17Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q636752": {
+          "name": "Archäologischer Anzeiger",
+          "partner": "Deutsches Archäologisches Institut",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:19Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:19Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q50814880": {
+          "name": "Journal of Spatial Information Science",
+          "partner": "JOSIS / TU Dresden",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:20Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:20Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q111049844": {
+          "name": "Cognitio",
+          "partner": "ZHB Luzern",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:22Z",
+                "v": 0
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:22Z",
+                "v": 0
+              }
+            ]
+          }
+        },
+        "Q107074231": {
+          "name": "itdb - inter- und transdisziplinäre Bildung",
+          "partner": "ZHB Luzern",
+          "articles": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:23Z",
+                "v": 14
+              }
+            ]
+          },
+          "citations_p2860": {
+            "series": [
+              {
+                "t": "2026-01-22T11:32:23Z",
+                "v": 0
+              }
+            ]
+          }
+        }
+      }
     },
-    {
-      "timestamp": "2026-01-22T11:31:13.697826Z",
-      "last_seen": "2026-01-22T11:31:13.697826Z",
-      "metric": "wikidata_komet_provenance_count",
-      "value": 0,
-      "source": "wikidata",
-      "notes": "Items with KOMET/OPTIMETA in P1343 source"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:14.327320Z",
-      "last_seen": "2026-01-22T11:31:14.327320Z",
-      "metric": "wikidata_journal_Q122948152_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:14.327346Z",
-      "last_seen": "2026-01-22T11:31:14.327346Z",
-      "metric": "wikidata_journal_Q122948152_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:15.934039Z",
-      "last_seen": "2026-01-22T11:31:15.934039Z",
-      "metric": "wikidata_journal_Q108455809_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:15.934062Z",
-      "last_seen": "2026-01-22T11:31:15.934062Z",
-      "metric": "wikidata_journal_Q108455809_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:17.438636Z",
-      "last_seen": "2026-01-22T11:31:17.438636Z",
-      "metric": "wikidata_journal_Q1678617_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:17.438648Z",
-      "last_seen": "2026-01-22T11:31:17.438648Z",
-      "metric": "wikidata_journal_Q1678617_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:20.734953Z",
-      "last_seen": "2026-01-22T11:31:20.734953Z",
-      "metric": "wikidata_journal_Q1455822_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:20.734993Z",
-      "last_seen": "2026-01-22T11:31:20.734993Z",
-      "metric": "wikidata_journal_Q1455822_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:22.512693Z",
-      "last_seen": "2026-01-22T11:31:22.512693Z",
-      "metric": "wikidata_journal_Q15756080_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:22.512718Z",
-      "last_seen": "2026-01-22T11:31:22.512718Z",
-      "metric": "wikidata_journal_Q15756080_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:24.282470Z",
-      "last_seen": "2026-01-22T11:31:24.282470Z",
-      "metric": "wikidata_journal_Q15764825_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:31:24.282495Z",
-      "last_seen": "2026-01-22T11:31:24.282495Z",
-      "metric": "wikidata_journal_Q15764825_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:11.038492Z",
-      "last_seen": "2026-01-22T11:32:11.038492Z",
-      "metric": "wikidata_journal_Q101247086_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:11.038551Z",
-      "last_seen": "2026-01-22T11:32:11.038551Z",
-      "metric": "wikidata_journal_Q101247086_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:12.713622Z",
-      "last_seen": "2026-01-22T11:32:12.713622Z",
-      "metric": "wikidata_journal_Q105103105_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:12.713656Z",
-      "last_seen": "2026-01-22T11:32:12.713656Z",
-      "metric": "wikidata_journal_Q105103105_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:14.209286Z",
-      "last_seen": "2026-01-22T11:32:14.209286Z",
-      "metric": "wikidata_journal_Q46478422_articles",
-      "value": 28,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:14.209313Z",
-      "last_seen": "2026-01-22T11:32:14.209313Z",
-      "metric": "wikidata_journal_Q46478422_citations_p2860",
-      "value": 2,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:16.107883Z",
-      "last_seen": "2026-01-22T11:32:16.107883Z",
-      "metric": "wikidata_journal_Q96332444_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:16.107917Z",
-      "last_seen": "2026-01-22T11:32:16.107917Z",
-      "metric": "wikidata_journal_Q96332444_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:17.578347Z",
-      "last_seen": "2026-01-22T11:32:17.578347Z",
-      "metric": "wikidata_journal_Q50817185_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:17.578384Z",
-      "last_seen": "2026-01-22T11:32:17.578384Z",
-      "metric": "wikidata_journal_Q50817185_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:19.099875Z",
-      "last_seen": "2026-01-22T11:32:19.099875Z",
-      "metric": "wikidata_journal_Q636752_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:19.099908Z",
-      "last_seen": "2026-01-22T11:32:19.099908Z",
-      "metric": "wikidata_journal_Q636752_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:20.579608Z",
-      "last_seen": "2026-01-22T11:32:20.579608Z",
-      "metric": "wikidata_journal_Q50814880_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:20.579637Z",
-      "last_seen": "2026-01-22T11:32:20.579637Z",
-      "metric": "wikidata_journal_Q50814880_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:22.167938Z",
-      "last_seen": "2026-01-22T11:32:22.167938Z",
-      "metric": "wikidata_journal_Q111049844_articles",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:22.167955Z",
-      "last_seen": "2026-01-22T11:32:22.167955Z",
-      "metric": "wikidata_journal_Q111049844_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:23.699836Z",
-      "last_seen": "2026-01-22T11:32:23.699836Z",
-      "metric": "wikidata_journal_Q107074231_articles",
-      "value": 14,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:23.699861Z",
-      "last_seen": "2026-01-22T11:32:23.699861Z",
-      "metric": "wikidata_journal_Q107074231_citations_p2860",
-      "value": 0,
-      "source": "wikidata"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:25.206277Z",
-      "last_seen": "2026-01-22T11:32:25.206277Z",
-      "metric": "opencitations_total_issues",
-      "value": 16,
-      "source": "opencitations"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:25.232038Z",
-      "last_seen": "2026-01-22T11:32:25.232038Z",
-      "metric": "opencitations_komet_issues",
-      "value": 5,
-      "source": "opencitations"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:25.247202Z",
-      "last_seen": "2026-01-22T11:32:25.247202Z",
-      "metric": "opencitations_komet_done",
-      "value": 0,
-      "source": "opencitations"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:25.247292Z",
-      "last_seen": "2026-01-22T11:32:25.247292Z",
-      "metric": "opencitations_komet_pending",
-      "value": 0,
-      "source": "opencitations"
-    },
-    {
-      "timestamp": "2026-01-22T11:32:25.247357Z",
-      "last_seen": "2026-01-22T11:32:25.247357Z",
-      "metric": "opencitations_komet_invalid",
-      "value": 4,
-      "source": "opencitations"
+    "opencitations": {
+      "description": "OpenCitations crowdsourcing metrics",
+      "total_issues": {
+        "name": "Total Crowdsourcing Issues",
+        "description": "All issues in opencitations/crowdsourcing repository",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:32:25Z",
+            "v": 16
+          }
+        ]
+      },
+      "komet_issues": {
+        "name": "KOMET Issues",
+        "description": "Issues created via KOMET-developed software",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:32:25Z",
+            "v": 5
+          }
+        ]
+      },
+      "komet_done": {
+        "name": "KOMET Successful",
+        "description": "KOMET contributions successfully processed",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:32:25Z",
+            "v": 0
+          }
+        ]
+      },
+      "komet_pending": {
+        "name": "KOMET Pending",
+        "description": "KOMET contributions awaiting processing",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:32:25Z",
+            "v": 0
+          }
+        ]
+      },
+      "komet_invalid": {
+        "name": "KOMET Invalid",
+        "description": "KOMET contributions marked as invalid",
+        "unit": "count",
+        "series": [
+          {
+            "t": "2026-01-22T11:32:25Z",
+            "v": 4
+          }
+        ]
+      }
     }
-  ]
+  }
 }

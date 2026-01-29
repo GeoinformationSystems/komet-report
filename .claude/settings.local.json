@@ -8,7 +8,13 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:projects.tib.eu)",
       "Bash(jupyter nbconvert:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(make update:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:www.bmbf.de)",
+      "WebFetch(domain:www.bmftr.bund.de)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(curl:*)"
     ]
   }
 }

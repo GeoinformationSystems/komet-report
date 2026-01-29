@@ -1,26 +1,20 @@
 # KOMET Reports
 
-Data reports on open metadata status by the KOMET project.
+Data reports on open metadata status in public knowledge bases by the KOMET project (<https://projects.tib.eu/komet>) on citation metadata and geometadata for scholarly works.
+This repository implements tracking of contributions to the open metadata commons from OJS-based journals using the structured citations feature (as of OJS 3.6, formerly the [citation manager plugin](https://github.com/TIBHannover/citationManager)) and the [geometadata plugin](https://github.com/TIBHannover/geoMetadata).
 
-**Project Website**: https://projects.tib.eu/komet
-**Predecessor**: OPTIMETA - https://projects.tib.eu/optimeta
-**Funding**: BMBF (German Federal Ministry of Education and Research)
-
-## About
-
-This repository implements **AP 4.3: Evaluation** from the KOMET project proposal, tracking contributions to the open metadata commons from OJS-based Open Access journals.
-
-**Primary target platform**: OpenCitations
-**Secondary/monitoring**: Wikidata
+**Target platforms**: OpenCitations and Wikidata
 
 ## Methodology
 
 ### Goals
 
-This evaluation tracks the contributions of the KOMET project (and its predecessor OPTIMETA) to the open metadata commons. The primary goal is to measure the impact of OJS plugins that enable journals to contribute citation and geospatial metadata to open knowledge bases.
+This evaluation tracks the contributions of the KOMET project to the open metadata commons.
+The primary goal is to measure the impact of OJS features and plugins that enable journals to contribute citation and geospatial metadata to open knowledge bases.
 
 **Key questions:**
-- How many citation relationships have KOMET/OPTIMETA contributions added to OpenCitations?
+
+- How many citation relationships have KOMET contributions added to OpenCitations and Wikidata?
 - What is the baseline citation coverage for partner journals in Wikidata?
 - How does metadata coverage change over time as more journals adopt the plugins?
 
@@ -35,22 +29,24 @@ This evaluation tracks the contributions of the KOMET project (and its predecess
 
 ### Metrics Collected
 
-**OpenCitations (Primary)**
-- `opencitations_total_issues`: Total crowdsourcing issues in the repository
-- `opencitations_komet_issues`: Issues created by KOMET team members
-- `opencitations_komet_done`: Successfully processed KOMET contributions
-- `opencitations_komet_pending`: KOMET contributions awaiting processing
-- `opencitations_komet_invalid`: KOMET contributions marked as invalid
+**OpenCitations**
 
-**Wikidata (Secondary/Monitoring)**
-- `wikidata_p1343_scholarly_count`: Scholarly articles with "described by source" property (baseline reference)
-- `wikidata_komet_provenance_count`: Items with KOMET/OPTIMETA provenance
-- `wikidata_journal_{QID}_articles`: Article count per partner journal
-- `wikidata_journal_{QID}_citations_p2860`: Outgoing citations per partner journal
+- `opencitations.total_issues`: Total crowdsourcing issues in the repository
+- `opencitations.komet_issues`: Issues created via KOMET-developed software
+- `opencitations.komet_done`: Successfully processed KOMET contributions
+- `opencitations.komet_pending`: KOMET contributions awaiting processing
+- `opencitations.komet_invalid`: KOMET contributions marked as invalid
+
+**Wikidata**
+
+- `wikidata.p1343_scholarly_count`: Scholarly articles with "described by source" property (baseline reference)
+- `wikidata.komet_provenance_count`: Items with KOMET provenance
+- `wikidata.journals.{QID}.articles`: Article count per partner journal
+- `wikidata.journals.{QID}.citations_p2860`: Outgoing citations per partner journal
 
 ### Partner Journals
 
-The evaluation tracks 15 journals from 8 collaboration partners that have committed to testing OPTIMETA/KOMET plugins:
+The evaluation tracks 15 journals from 8 collaboration partners that have committed to testing KOMET plugins:
 
 | Partner | Journals | Platforms |
 |---------|----------|-----------|
@@ -66,12 +62,31 @@ Each journal is identified by its Wikidata QID (where available) to enable preci
 
 ### Timeline Tracking
 
-Statistics are stored in `komet_timeline.json` with the following approach:
+Statistics are stored in `komet_timeline.json` using a hierarchical v2.0 format:
 
-1. **Timestamped observations**: Each metric value is recorded with ISO timestamps
-2. **Change detection**: New entries are only added when values change; otherwise, only `last_seen` is updated
-3. **Historical comparison**: Enables tracking trends over the project lifetime
-4. **JSON format**: Human-readable and version-control friendly
+1. **Structured metrics**: Metrics are grouped by source (wikidata, opencitations) with metadata
+2. **Time series**: Each metric stores a compact series of `{t, v}` (timestamp, value) pairs
+3. **Change detection**: New entries are only added when values change
+4. **Human-readable**: Metrics include descriptive names, descriptions, and units
+5. **Reduced duplication**: Journal metadata is stored once per journal, not repeated per observation
+
+Example structure:
+
+```json
+{
+  "metrics": {
+    "wikidata": {
+      "journals": {
+        "Q123456": {
+          "name": "Journal Name",
+          "partner": "Institution",
+          "articles": { "series": [{"t": "2026-01-22T12:00:00Z", "v": 42}] }
+        }
+      }
+    }
+  }
+}
+```
 
 ### Limitations
 
@@ -110,23 +125,10 @@ The notebook is designed to run weekly via GitHub Actions CI:
 ### Statistics & Analysis
 
 - [x] Create baseline statistics for partner journals in Wikidata
-- [x] Track OpenCitations contributions by KOMET team (GaziYucel)
+- [x] Track OpenCitations contributions via KOMET-developed software (GaziYucel account)
 - [ ] Create statistics for potential impact of OJS citations
 - [x] Store statistics in timestamped JSON file (komet_timeline.json)
 - [ ] Add historical comparison visualizations
-
-### Automation & Infrastructure
-
-- [x] Run Notebook once a week via CI (GitHub Actions)
-- [x] Recalculate statistics weekly, only update timeline if values changed
-- [ ] Add notification for significant changes
-
-### Documentation & Branding
-
-- [x] Add info/branding of KOMET to notebook
-- [x] Add funder statement to README and notebook
-- [x] Add extensive README with methodology description
-- [ ] Create project logo/banner integration
 
 ## Files
 
@@ -134,9 +136,11 @@ The notebook is designed to run weekly via GitHub Actions CI:
 |------|-------------|
 | `komet_evaluation.ipynb` | Main analysis notebook |
 | `komet_helpers.py` | Python helper functions for API queries |
-| `komet_timeline.json` | Timestamped observations log (auto-updated) |
+| `komet_timeline.json` | Timestamped observations log (auto-updated, hierarchical format) |
 | `komet_report_data.json` | Latest report snapshot |
 | `docs/index.html` | HTML report for GitHub Pages (auto-generated) |
+| `Makefile` | Build automation for local development and CI |
+| `templates/collapsible/` | Custom nbconvert template for collapsible code cells |
 | `CLAUDE.md` | Project context and AI assistant documentation |
 
 ## Related Repositories
@@ -149,22 +153,98 @@ The notebook is designed to run weekly via GitHub Actions CI:
 
 ## Usage
 
-```bash
-# Install dependencies
-pip install requests jupyter
+### Prerequisites
 
-# Run the evaluation notebook
-jupyter notebook komet_evaluation.ipynb
+- Python 3.11+ (with `venv` module)
+- Make
+
+### Quick Start
+
+```bash
+# Create virtual environment and install dependencies
+make install
+
+# Run the evaluation notebook interactively
+.venv/bin/jupyter notebook komet_evaluation.ipynb
 
 # Or run helper module directly for quick test
-python komet_helpers.py
+.venv/bin/python komet_helpers.py
 ```
+
+### Local Development
+
+The project uses a Makefile that automatically manages a local `.venv` virtual environment. Run `make help` to see all available targets:
+
+```bash
+make help        # Show available targets
+make install     # Create venv and install Python dependencies
+make run         # Execute notebook (updates timeline and report data)
+make html        # Generate HTML report in docs/
+make update      # Run notebook and generate HTML (full update)
+make check       # Verify notebook executes without errors
+make serve       # Start local HTTP server to preview docs/
+make clean       # Remove generated HTML and report data
+make clean-all   # Remove all generated files including timeline
+make clean-venv  # Remove virtual environment
+make distclean   # Remove everything (clean-all + clean-venv)
+```
+
+### Virtual Environment
+
+The Makefile automatically creates and uses a `.venv` directory for Python dependencies. This ensures:
+
+- Reproducible builds locally and in CI
+- No interference with system Python packages
+- Easy cleanup with `make clean-venv`
+
+To start fresh with a clean environment:
+
+```bash
+make distclean   # Remove all generated files and venv
+make update      # Recreate venv, install deps, run notebook, generate HTML
+```
+
+### Generating the Report Locally
+
+To regenerate the HTML report for preview:
+
+```bash
+# Full update: execute notebook and generate HTML
+make update
+
+# Preview the generated HTML locally
+make serve
+# Then open http://localhost:8000 in your browser
+```
+
+The HTML report is generated with an informative title ("KOMET Project - Open Metadata Evaluation Report") and code cells are collapsed by default for cleaner output.
+
+### Cell Tags
+
+The notebook uses cell tags to control HTML export behavior:
+
+| Tag | Effect |
+|-----|--------|
+| `remove-cell` | Cell completely removed from HTML export |
+| `code_shown` | Code cell expanded by default (otherwise collapsed) |
+
+Code cells without tags are collapsed but can be expanded by clicking "Show Code".
+
+### CI Automation
+
+The same Makefile targets are used in GitHub Actions CI (`.github/workflows/update-report.yml`):
+
+1. `make install` - Create venv and install dependencies
+2. `make update` - Execute notebook and generate HTML
+3. Commit and push changes if data changed
+
+The workflow runs automatically on the 1st of each month at 06:00 UTC and can be triggered manually via the GitHub Actions UI.
 
 ## Funding
 
-This work is funded by the German Federal Ministry of Education and Research (BMBF) under grant number 16TOA039.
+This work is funded by the German Federal Ministry of Education and Research (BMBFTR) under grant number `16TOA039`.
 
-![BMBF Logo](https://www.bmbf.de/SiteGlobals/Frontend/Images/icons/logo.svg?__blob=normal)
+![BMFTR Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/BMFTR_Logo.svg/320px-BMFTR_Logo.svg.png)
 
 The KOMET project (Förderkennzeichen 16TOA039) is part of the funding initiative "Förderung von Projekten zur Etablierung einer gelebten Open-Access-Kultur in der deutschen Forschungs- und Wissenschaftspraxis."
 
