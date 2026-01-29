@@ -14,7 +14,16 @@
       "WebFetch(domain:www.bmbf.de)",
       "WebFetch(domain:www.bmftr.bund.de)",
       "WebFetch(domain:commons.wikimedia.org)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebFetch(domain:mwouts.github.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(python3:*)",
+      "WebFetch(domain:gist.github.com)",
+      "Bash(make html:*)",
+      "WebFetch(domain:productionresultssa19.blob.core.windows.net)",
+      "Bash(gh api:*)",
+      "Bash(make:*)",
+      "Bash(echo:*)"
     ]
   }
 }
