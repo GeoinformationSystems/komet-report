@@ -1,0 +1,116 @@
+{#
+  Collapsible Code Cells Template for KOMET Report
+
+  This template extends the lab template and adds:
+  - Code cells hidden by default (collapsed)
+  - Toggle button to show/hide code
+  - Cells tagged with 'code_shown' are visible by default
+  - Cells tagged with 'remove-cell' are completely removed
+#}
+
+{% extends "lab/index.html.j2" %}
+
+{% block html_head_css %}
+{{ super() }}
+<style type="text/css">
+/* Collapsible code cell styling */
+.code-toggle-header {
+    background-color: #f7f7f7;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+    user-select: none;
+}
+.code-toggle-header:hover {
+    background-color: #ebebeb;
+}
+.code-toggle-header.code-shown {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+.jp-InputArea {
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.code-hidden .jp-InputArea {
+    display: none;
+}
+.code-toggle-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 6px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid #666;
+    transition: transform 0.2s ease;
+}
+.code-shown .code-toggle-icon {
+    transform: rotate(90deg);
+}
+</style>
+{% endblock html_head_css %}
+
+{% block html_head_js %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add toggle functionality to all code cells
+    document.querySelectorAll('.jp-Cell.jp-CodeCell').forEach(function(cell) {
+        // Check if cell should be shown by default (has code_shown class or data attribute)
+        var showByDefault = cell.classList.contains('code_shown') ||
+                           cell.getAttribute('data-code-shown') === 'true';
+
+        // Find the input area
+        var inputArea = cell.querySelector('.jp-InputArea');
+        if (!inputArea) return;
+
+        // Create toggle header
+        var header = document.createElement('div');
+        header.className = 'code-toggle-header' + (showByDefault ? ' code-shown' : '');
+        header.innerHTML = '<span class="code-toggle-icon"></span><span class="toggle-text">' +
+                          (showByDefault ? 'Hide Code' : 'Show Code') + '</span>';
+
+        // Insert header before input area
+        inputArea.parentNode.insertBefore(header, inputArea);
+
+        // Set initial state
+        if (!showByDefault) {
+            cell.classList.add('code-hidden');
+        }
+
+        // Add click handler
+        header.addEventListener('click', function() {
+            var isHidden = cell.classList.contains('code-hidden');
+            if (isHidden) {
+                cell.classList.remove('code-hidden');
+                header.classList.add('code-shown');
+                header.querySelector('.toggle-text').textContent = 'Hide Code';
+            } else {
+                cell.classList.add('code-hidden');
+                header.classList.remove('code-shown');
+                header.querySelector('.toggle-text').textContent = 'Show Code';
+            }
+        });
+    });
+});
+</script>
+{% endblock html_head_js %}
+
+{# Override input to add data attribute for code_shown tag #}
+{% block input %}
+{% if 'code_shown' in cell.metadata.get('tags', []) %}
+<div class="jp-Cell-inputWrapper" data-code-shown="true">
+{% else %}
+<div class="jp-Cell-inputWrapper">
+{% endif %}
+{{ super() }}
+</div>
+{% endblock input %}
