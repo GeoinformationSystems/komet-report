@@ -24,26 +24,54 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install typst
+        run: |
+          TYPST_VERSION="0.14.0"
+          wget -q "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz"
+          tar -xf typst-x86_64-unknown-linux-musl.tar.xz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+          rm -rf typst-x86_64-unknown-linux-musl*
+          echo "Installed typst version:"
+          typst --version
+
+      - name: Install Python dependencies
         run: make install
+
+      - name: Save previous report data for comparison
+        run: |
+          # Save current data (excluding timestamp) for comparison
+          if [ -f komet_report_data.json ]; then
+            jq 'del(.report_timestamp)' komet_report_data.json > /tmp/old_report_data.json
+          else
+            echo '{}' > /tmp/old_report_data.json
+          fi
 
       - name: Execute notebook and generate HTML
         run: make update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check for changes
+      - name: Check for data changes (not just timestamp)
         id: changes
         run: |
-          git diff --quiet komet_timeline.json || echo "timeline_changed=true" >> $GITHUB_OUTPUT
-          git diff --quiet komet_report_data.json || echo "report_changed=true" >> $GITHUB_OUTPUT
-          git diff --quiet docs/index.html || echo "html_changed=true" >> $GITHUB_OUTPUT
+          # Compare report data excluding timestamp
+          jq 'del(.report_timestamp)' komet_report_data.json > /tmp/new_report_data.json
+          if ! diff -q /tmp/old_report_data.json /tmp/new_report_data.json > /dev/null 2>&1; then
+            echo "data_changed=true" >> $GITHUB_OUTPUT
+            echo "Data content has changed"
+          else
+            echo "No data content changes (only timestamp updated)"
+          fi
+
+      - name: Generate PDF report
+        if: steps.changes.outputs.data_changed == 'true'
+        run: make pdf
 
       - name: Commit and push changes
-        if: steps.changes.outputs.timeline_changed == 'true' || steps.changes.outputs.report_changed == 'true' || steps.changes.outputs.html_changed == 'true'
+        if: steps.changes.outputs.data_changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add komet_timeline.json komet_report_data.json komet_evaluation.ipynb docs/index.html
+          git add komet_timeline.json komet_report_data.json komet_evaluation.ipynb docs/index.html docs/komet_report.pdf
           git commit -m "Update KOMET report data ($(date -u +%Y-%m))"
           git push

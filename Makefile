@@ -2,7 +2,7 @@
 # ====================
 # Common targets for local development and CI automation
 
-.PHONY: all run html clean install check help venv clean-venv update serve
+.PHONY: all run html pdf clean install check help venv clean-venv update serve
 
 # Virtual environment directory
 VENV := .venv
@@ -52,6 +52,43 @@ html: install
 	@# Update the HTML title tag for better browser display
 	@sed -i 's|<title>komet_evaluation</title>|<title>KOMET Project - Open Metadata Evaluation Report</title>|g' docs/index.html
 
+# Generate PDF report using typst
+# Requires: typst installed on system
+# Note: Run 'make run' first to execute the notebook
+pdf: install
+	@if ! command -v typst >/dev/null 2>&1; then \
+		echo "Error: typst not found. Install from https://typst.app/docs/guides/install/"; \
+		exit 1; \
+	fi
+	$(JUPYTER) nbconvert \
+		--to markdown \
+		--output-dir=docs \
+		--output=report \
+		--no-input \
+		--no-prompt \
+		--TagRemovePreprocessor.enabled=True \
+		--TagRemovePreprocessor.remove_cell_tags='["remove-cell"]' \
+		komet_evaluation.ipynb
+	@# Download external images and replace URLs with local paths
+	@mkdir -p docs/images
+	@cd docs && for url in $$(grep -oE 'https://[^)]+\.(png|jpg|svg)' report.md | head -20); do \
+		filename=$$(echo "$$url" | sed 's|.*/||; s|%20|_|g'); \
+		echo "Downloading $$filename from $$url..."; \
+		wget -q --timeout=10 "$$url" -O "images/$$filename" 2>/dev/null; \
+		if [ -s "images/$$filename" ]; then \
+			sed -i "s|$$url|images/$$filename|g" report.md; \
+		else \
+			echo "  Warning: Download failed or empty, removing image reference"; \
+			rm -f "images/$$filename"; \
+			sed -i "s|!\[[^]]*\]($$url)||g" report.md; \
+		fi; \
+	done
+	cp templates/komet_report.typ docs/komet_report.typ
+	cd docs && typst compile --root . komet_report.typ komet_report.pdf
+	rm -f docs/report.md docs/komet_report.typ
+	rm -rf docs/report_files docs/images
+	@echo "PDF report generated: docs/komet_report.pdf"
+
 # Run notebook and generate HTML (full update)
 update: run html
 
@@ -66,6 +103,7 @@ check: install
 # Clean generated files (preserves timeline data and venv)
 clean:
 	rm -f docs/index.html
+	rm -f docs/komet_report.pdf
 	rm -f komet_report_data.json
 
 # Clean all generated files including timeline (preserves venv)
@@ -91,6 +129,7 @@ help:
 	@echo "  make install    - Create venv and install Python dependencies"
 	@echo "  make run        - Execute notebook (updates data files)"
 	@echo "  make html       - Generate HTML report in docs/"
+	@echo "  make pdf        - Generate PDF report using typst (requires typst CLI)"
 	@echo "  make update     - Run notebook and generate HTML"
 	@echo "  make check      - Verify notebook executes without errors"
 	@echo "  make serve      - Start local HTTP server for preview"

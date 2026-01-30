@@ -3,5 +3,5 @@ requests
 jupyter
 nbconvert
 pandas
-itables
+tabulate
 matplotlib

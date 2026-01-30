@@ -1,0 +1,103 @@
+{
+  "title": "KOMET Project - Open Metadata Evaluation Report",
+  "description": "<p>Data reports evaluating the contributions of the <a href=\"https://projects.tib.eu/komet\">KOMET project</a> (Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems) to the open metadata commons. The project develops OJS plugins that enable Open Access journals to contribute citation and geospatial metadata to open knowledge bases like <a href=\"https://opencitations.net/\">OpenCitations</a> and <a href=\"https://www.wikidata.org/\">Wikidata</a>. This repository tracks and visualizes these contributions over time.</p><p><strong>Contents of this deposition:</strong></p><ul><li><strong>Source code:</strong> <code>komet_evaluation.ipynb</code> – Jupyter notebook with analysis code and narrative</li><li><strong>Data files:</strong><ul><li><code>komet_report_data.json</code> – Current metrics snapshot</li><li><code>komet_timeline.json</code> – Historical time series data</li></ul></li><li><strong>Rendered reports:</strong><ul><li><code>docs/komet_report.pdf</code> – PDF report for offline reading</li><li><a href=\"https://geoinformationsystems.github.io/komet-report/\">Interactive HTML report</a> (online)</li></ul></li></ul><p>Source repository: <a href=\"https://github.com/GeoinformationSystems/komet-report\">github.com/GeoinformationSystems/komet-report</a></p>",
+  "creators": [
+    {
+      "name": "Nüst, Daniel",
+      "affiliation": "TU Dresden, Chair of Geoinformatics",
+      "orcid": "0000-0002-0024-5046"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Yücel, Gazi",
+      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "orcid": "0000-0002-2013-6920",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Hauschke, Christian",
+      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "orcid": "0000-0003-2499-7741",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Niers, Tom",
+      "affiliation": "TU Dresden, Chair of Geoinformatics",
+      "orcid": "0000-0002-5746-8590",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Aydin, Zeynep",
+      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "orcid": "0000-0002-4234-2717",
+      "type": "ProjectMember"
+    }
+  ],
+  "keywords": [
+    "open metadata",
+    "open access",
+    "scholarly communication",
+    "OpenCitations",
+    "Wikidata",
+    "OJS",
+    "Open Journal Systems",
+    "citation metadata",
+    "KOMET",
+    "OPTIMETA",
+    "metadata commons"
+  ],
+  "license": "CC0-1.0",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "language": "eng",
+  "grants": [
+    {
+      "id": "10.13039/501100002347::16TOA039"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/GeoinformationSystems/komet-report",
+      "relation": "isSupplementedBy",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://projects.tib.eu/komet",
+      "relation": "isDocumentedBy",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://projects.tib.eu/optimeta",
+      "relation": "continues",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/TIBHannover/optimetaCitations",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/TIBHannover/optimetaGeo",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://geoinformationsystems.github.io/komet-report/",
+      "relation": "isVariantFormOf",
+      "resource_type": "other",
+      "scheme": "url"
+    }
+  ],
+  "references": [
+    "KOMET project website: https://projects.tib.eu/komet",
+    "OpenCitations: https://opencitations.net/",
+    "Wikidata: https://www.wikidata.org/"
+  ],
+  "notes": "This work is funded by the German Federal Ministry of Education and Research (BMBF) under grant number 16TOA039. The KOMET project is part of the funding initiative 'Förderung von Projekten zur Etablierung einer gelebten Open-Access-Kultur in der deutschen Forschungs- und Wissenschaftspraxis.'"
+}

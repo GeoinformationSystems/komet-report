@@ -8,29 +8,6 @@
   "metrics": {
     "wikidata": {
       "description": "Wikidata scholarly graph metrics",
-      "p1343_scholarly_count": {
-        "name": "P1343 Scholarly Articles",
-        "description": "Scholarly articles with 'described by source' property",
-        "unit": "count",
-        "notes": "P1343 rarely used for scholarly articles - not primary tracking method",
-        "series": [
-          {
-            "t": "2026-01-22T11:30:13Z",
-            "v": 14
-          }
-        ]
-      },
-      "komet_provenance_count": {
-        "name": "KOMET Provenance Items",
-        "description": "Wikidata items with KOMET as source",
-        "unit": "count",
-        "series": [
-          {
-            "t": "2026-01-22T11:31:13Z",
-            "v": 0
-          }
-        ]
-      },
       "journals": {
         "description": "Partner journal statistics from Wikidata",
         "Q122948152": {
@@ -39,7 +16,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:14Z",
+                "t": "2026-01-30T10:03:08.218600Z",
                 "v": 0
               }
             ]
@@ -47,7 +24,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:14Z",
+                "t": "2026-01-30T10:03:08.218624Z",
                 "v": 0
               }
             ]
@@ -59,15 +36,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:15Z",
-                "v": 0
-              },
-              {
-                "t": "2026-01-22T14:05:18.482694Z",
-                "v": null
-              },
-              {
-                "t": "2026-01-22T15:53:46.374578Z",
+                "t": "2026-01-30T10:03:09.894575Z",
                 "v": 0
               }
             ]
@@ -75,7 +44,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:15Z",
+                "t": "2026-01-30T10:03:09.894597Z",
                 "v": 0
               }
             ]
@@ -87,7 +56,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:17Z",
+                "t": "2026-01-30T10:04:13.023390Z",
                 "v": 0
               }
             ]
@@ -95,7 +64,11 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:17Z",
+                "t": "2026-01-30T10:04:13.023415Z",
+                "v": null
+              },
+              {
+                "t": "2026-01-30T12:17:59.348279Z",
                 "v": 0
               }
             ]
@@ -107,7 +80,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:20Z",
+                "t": "2026-01-30T10:04:14.502444Z",
                 "v": 0
               }
             ]
@@ -115,7 +88,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:20Z",
+                "t": "2026-01-30T10:04:14.502469Z",
                 "v": 0
               }
             ]
@@ -127,7 +100,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:22Z",
+                "t": "2026-01-30T10:04:15.973301Z",
                 "v": 0
               }
             ]
@@ -135,7 +108,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:22Z",
+                "t": "2026-01-30T10:04:15.973324Z",
                 "v": 0
               }
             ]
@@ -147,7 +120,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:31:24Z",
+                "t": "2026-01-30T10:04:17.899112Z",
                 "v": 0
               }
             ]
@@ -155,7 +128,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:31:24Z",
+                "t": "2026-01-30T10:04:17.899135Z",
                 "v": 0
               }
             ]
@@ -167,7 +140,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:11Z",
+                "t": "2026-01-30T10:04:19.619896Z",
                 "v": 0
               }
             ]
@@ -175,7 +148,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:11Z",
+                "t": "2026-01-30T10:04:19.619920Z",
                 "v": 0
               }
             ]
@@ -187,7 +160,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:12Z",
+                "t": "2026-01-30T10:04:21.147280Z",
                 "v": 0
               }
             ]
@@ -195,7 +168,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:12Z",
+                "t": "2026-01-30T10:04:21.147302Z",
                 "v": 0
               }
             ]
@@ -207,7 +180,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:14Z",
+                "t": "2026-01-30T10:04:32.233522Z",
                 "v": 28
               }
             ]
@@ -215,7 +188,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:14Z",
+                "t": "2026-01-30T10:04:32.233548Z",
                 "v": 2
               }
             ]
@@ -227,7 +200,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:16Z",
+                "t": "2026-01-30T10:04:33.968958Z",
                 "v": 0
               }
             ]
@@ -235,7 +208,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:16Z",
+                "t": "2026-01-30T10:04:33.968986Z",
                 "v": 0
               }
             ]
@@ -247,7 +220,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:17Z",
+                "t": "2026-01-30T10:04:35.513339Z",
                 "v": 0
               }
             ]
@@ -255,7 +228,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:17Z",
+                "t": "2026-01-30T10:04:35.513363Z",
                 "v": 0
               }
             ]
@@ -267,7 +240,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:19Z",
+                "t": "2026-01-30T10:04:37.147009Z",
                 "v": 0
               }
             ]
@@ -275,7 +248,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:19Z",
+                "t": "2026-01-30T10:04:37.147027Z",
                 "v": 0
               }
             ]
@@ -287,7 +260,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:20Z",
+                "t": "2026-01-30T10:04:38.629852Z",
                 "v": 0
               }
             ]
@@ -295,7 +268,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:20Z",
+                "t": "2026-01-30T10:04:38.629879Z",
                 "v": 0
               }
             ]
@@ -307,7 +280,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:22Z",
+                "t": "2026-01-30T10:04:40.117044Z",
                 "v": 0
               }
             ]
@@ -315,7 +288,7 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:22Z",
+                "t": "2026-01-30T10:04:40.117063Z",
                 "v": 0
               }
             ]
@@ -327,7 +300,7 @@
           "articles": {
             "series": [
               {
-                "t": "2026-01-22T11:32:23Z",
+                "t": "2026-01-30T10:04:42.384333Z",
                 "v": 14
               }
             ]
@@ -335,70 +308,89 @@
           "citations_p2860": {
             "series": [
               {
-                "t": "2026-01-22T11:32:23Z",
+                "t": "2026-01-30T10:04:42.384347Z",
                 "v": 0
               }
             ]
           }
         }
+      },
+      "p1343_scholarly_count": {
+        "series": [
+          {
+            "t": "2026-01-30T10:03:07.723026Z",
+            "v": 14
+          }
+        ],
+        "name": "P1343 Scholarly Articles",
+        "description": "Scholarly articles with 'described by source' property",
+        "notes": "P1343 rarely used for scholarly articles",
+        "unit": "count"
+      },
+      "komet_provenance_count": {
+        "series": [
+          {
+            "t": "2026-01-30T10:03:07.723154Z",
+            "v": 0
+          }
+        ],
+        "name": "KOMET Provenance Items",
+        "description": "Wikidata items with KOMET as source",
+        "notes": "Items with KOMET in P1343 source",
+        "unit": "count"
       }
     },
     "opencitations": {
       "description": "OpenCitations crowdsourcing metrics",
       "total_issues": {
-        "name": "Total Crowdsourcing Issues",
-        "description": "All issues in opencitations/crowdsourcing repository",
-        "unit": "count",
         "series": [
           {
-            "t": "2026-01-22T11:32:25Z",
+            "t": "2026-01-30T10:04:44.173095Z",
             "v": 16
           }
-        ]
+        ],
+        "name": "Total Crowdsourcing Issues",
+        "unit": "count"
       },
       "komet_issues": {
-        "name": "KOMET Issues",
-        "description": "Issues created via KOMET-developed software",
-        "unit": "count",
         "series": [
           {
-            "t": "2026-01-22T11:32:25Z",
+            "t": "2026-01-30T10:04:44.173198Z",
             "v": 5
           }
-        ]
+        ],
+        "name": "KOMET Issues",
+        "unit": "count"
       },
       "komet_done": {
-        "name": "KOMET Successful",
-        "description": "KOMET contributions successfully processed",
-        "unit": "count",
         "series": [
           {
-            "t": "2026-01-22T11:32:25Z",
+            "t": "2026-01-30T10:04:44.173287Z",
             "v": 0
           }
-        ]
+        ],
+        "name": "KOMET Successful",
+        "unit": "count"
       },
       "komet_pending": {
-        "name": "KOMET Pending",
-        "description": "KOMET contributions awaiting processing",
-        "unit": "count",
         "series": [
           {
-            "t": "2026-01-22T11:32:25Z",
+            "t": "2026-01-30T10:04:44.173344Z",
             "v": 0
           }
-        ]
+        ],
+        "name": "KOMET Pending",
+        "unit": "count"
       },
       "komet_invalid": {
-        "name": "KOMET Invalid",
-        "description": "KOMET contributions marked as invalid",
-        "unit": "count",
         "series": [
           {
-            "t": "2026-01-22T11:32:25Z",
+            "t": "2026-01-30T10:04:44.173402Z",
             "v": 4
           }
-        ]
+        ],
+        "name": "KOMET Invalid",
+        "unit": "count"
       }
     }
   }

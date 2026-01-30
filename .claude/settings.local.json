@@ -23,7 +23,15 @@
       "WebFetch(domain:productionresultssa19.blob.core.windows.net)",
       "Bash(gh api:*)",
       "Bash(make:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(typst:*)",
+      "WebFetch(domain:typst.app)",
+      "WebFetch(domain:quarto.org)",
+      "WebFetch(domain:forum.typst.app)",
+      "Bash(gh pr view:*)",
+      "Bash(pandoc:*)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(.venv/bin/jupyter nbconvert:*)"
     ]
   }
 }
