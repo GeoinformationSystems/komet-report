@@ -7890,20 +7890,17 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="KOMET-Project-Evaluation-Report">KOMET Project Evaluation Report<a class="anchor-link" href="#KOMET-Project-Evaluation-Report"> </a></h1><p><img alt="KOMET Project" src="https://projects.tib.eu/fileadmin/templates/komet/tib_projects_komet_1150.png"/></p>
-<h2 id="About-KOMET">About KOMET<a class="anchor-link" href="#About-KOMET"> </a></h2><p><strong>KOMET</strong> — <em>Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems</em> (Collaborative Enrichment of the Metadata Commons to Foster a Diverse Open Access Ecosystem) — enhances metadata processes for independent, scholar-led Open Access journals. The project develops plugins and tools for Open Journal Systems (OJS) to improve article discoverability (<a href="https://projects.tib.eu/komet/en/">https://projects.tib.eu/komet/en/</a>).</p>
-<p>KOMET builds on its related project OPTIMETA (<a href="https://projects.tib.eu/optimeta/en/">https://projects.tib.eu/optimeta/en/</a>) and develops three OJS plugins:</p>
+<h2 id="About-KOMET">About KOMET<a class="anchor-link" href="#About-KOMET"> </a></h2><p><strong>KOMET</strong> — <em>Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems</em> (Collaborative Enrichment of the Metadata Commons to Foster a Diverse Open Access Ecosystem) — enhances metadata processes for independent, scholar-led Open Access journals. The project develops plugins and tools to improve article discoverability (<a href="https://projects.tib.eu/komet/en/">https://projects.tib.eu/komet/en/</a>). KOMET builds in part on its related project OPTIMETA (<a href="https://projects.tib.eu/optimeta/en/">https://projects.tib.eu/optimeta/en/</a>) and develops different tools and software to advance <a href="https://barcelona-declaration.org/">open research information</a>, including three OJS plugins:</p>
 <ul>
-<li><strong>PID Plugin</strong>: Integrating validated persistent identifiers (ROR, IGSN, PIDINST, ConfIDent) into article metadata</li>
-<li><strong>Citations Plugin</strong>: Structured citation metadata capture and publication to the open citation graph via OpenCitations Crowdsourcing (<a href="https://github.com/opencitations/crowdsourcing">https://github.com/opencitations/crowdsourcing</a>)</li>
-<li><strong>Geo Plugin</strong>: Geospatial and temporal metadata for location-based article discovery via OPTIMAP (<a href="https://optimap.science/">https://optimap.science/</a>)</li>
+<li><strong>PID Plugin</strong>: Integrating validated persistent identifiers (ROR, IGSN, PIDINST, ConfIDent) into article metadata in OJS (<a href="https://github.com/GaziYucel/pidManager/">https://github.com/GaziYucel/pidManager/</a>)</li>
+<li><strong>Citations</strong>: Structured citation metadata in OJS core (version 3.6, see details in <a href="https://www.youtube.com/watch?v=YX4y2k-eP_w">https://www.youtube.com/watch?v=YX4y2k-eP_w</a>; formely developed as a plugin at <a href="https://github.com/TIBHannover/citationManager">https://github.com/TIBHannover/citationManager</a>) for capture and publication to the open citation graph via OpenCitations Crowdsourcing (<a href="https://github.com/opencitations/crowdsourcing">https://github.com/opencitations/crowdsourcing</a>)</li>
+<li><strong>Geo Plugin</strong>: Geospatial and temporal metadata for location-based article discovery in OJS (<a href="https://github.com/TIBHannover/geoMetadata">https://github.com/TIBHannover/geoMetadata</a>)</li>
+<li><strong>Janeway Plugin</strong>: Geospatial and temporal metadata for location-based article discovery (<a href="https://github.com/GeoinformationSystems/janeway_geometadata">https://github.com/GeoinformationSystems/janeway_geometadata</a>)</li>
+<li><strong>OPTIMAP</strong>: A central discovery page for geometadata-enabled scholarly works (<a href="https://optimap.science/">https://optimap.science/</a>)</li>
 </ul>
-<p><strong>Funding</strong>: BMBFTR (German Federal Ministry of Education and Research)<br/>
-<strong>Duration</strong>: September 2023 – August 2025<br/>
-<strong>Partners</strong>: TIB Hannover (coordinator), TU Dresden</p>
 <p>The project outputs are available on GitHub (<a href="https://github.com/TIBHannover/optimetaCitations">https://github.com/TIBHannover/optimetaCitations</a>, <a href="https://github.com/TIBHannover/optimetaGeo">https://github.com/TIBHannover/optimetaGeo</a>, <a href="https://github.com/TIBHannover/optimeta-plugin-shared">https://github.com/TIBHannover/optimeta-plugin-shared</a>) and the team communicates via Mastodon (<a href="https://openbiblio.social/@komet">https://openbiblio.social/@komet</a>).</p>
-<hr/>
-<h2 id="This-Notebook:-AP-4.3-Evaluation">This Notebook: AP 4.3 Evaluation<a class="anchor-link" href="#This-Notebook:-AP-4.3-Evaluation"> </a></h2><p>This notebook implements <strong>Work Package 4.3: Evaluation</strong> from the KOMET project proposal, tracking contributions to the open metadata commons. A <a href="komet_report.pdf">PDF version of this report</a> is also available.</p>
-<h3 id="Data-Sources-&amp;-Platform-Priority">Data Sources &amp; Platform Priority<a class="anchor-link" href="#Data-Sources-&amp;-Platform-Priority"> </a></h3><table>
+<p>This notebook is part of the KOMET work package on evaluation. It tracks the development and, as far as possible, contributions to the open metadata commons in the areas of citation metadata and geometadata. A <a href="komet_report.pdf">PDF version of this report</a> is also available. The source of this notebook and all underlying data is available on GitHub (<a href="https://github.com/GeoinformationSystems/komet-report/">https://github.com/GeoinformationSystems/komet-report/</a>).</p>
+<h2 id="Data-Sources">Data Sources<a class="anchor-link" href="#Data-Sources"> </a></h2><table>
 <thead>
 <tr>
 <th>Source</th>
@@ -7919,13 +7916,8 @@ a.anchor-link {
 </tr>
 <tr>
 <td><strong>Wikidata</strong></td>
-<td>Scholarly graph baseline &amp; P2860 citations</td>
+<td>Scholarly graph baseline &amp; specific properties</td>
 <td>Monitoring</td>
-</tr>
-<tr>
-<td><strong>OpenAIRE</strong></td>
-<td>Future: citation data exploration</td>
-<td>Planned</td>
 </tr>
 </tbody>
 </table>
@@ -7993,15 +7985,34 @@ a.anchor-link {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0;">
-<h4 style="margin-top: 0;">Report Information</h4>
-<ul style="margin-bottom: 0;">
-<li><strong>Generated:</strong> 2026-02-01 06:39:18 UTC</li>
-<li><strong>Timeline Version:</strong> 2.0</li>
-<li><strong>Last Updated:</strong> 2026-01-30 15:20:01 UTC</li>
-<li><strong>Update Frequency:</strong> Monthly (1st of each month)</li>
-</ul>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
+<p><strong>Report Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generated</td>
+<td>2026-02-02 14:15:43 UTC</td>
+</tr>
+<tr>
+<td>Timeline Version</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Last Updated</td>
+<td>2026-02-02 13:58:44 UTC</td>
+</tr>
+<tr>
+<td>Update Frequency</td>
+<td>Monthly (1st of each month)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -8142,88 +8153,124 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_886fc968_0321_4490_a81e_eadd65fc4c4c"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_886fc968_0321_4490_a81e_eadd65fc4c4c:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "columnDefs": [{"className": "dt-left", "targets": [0, 1]}], "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Journal</th>\n      <th>Partner</th>\n      <th>Wikidata QID</th>\n      <th>Articles</th>\n      <th>Citations (P2860)</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"Journal of South Asian Linguistics\", \"KIM Universit\\u00e4t Konstanz\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q122948152\\\" target=\\\"_blank\\\"&gt;Q122948152&lt;/a&gt;\", 0, 0], [\"Free Neuropathology\", \"WWU M\\u00fcnster\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q108455809\\\" target=\\\"_blank\\\"&gt;Q108455809&lt;/a&gt;\", 0, 0], [\"Jahrbuch f\\u00fcr Christliche Sozialwissenschaften\", \"WWU M\\u00fcnster\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q1678617\\\" target=\\\"_blank\\\"&gt;Q1678617&lt;/a&gt;\", 0, 0], [\"Journal f\\u00fcr Kulturpflanzen\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q1455822\\\" target=\\\"_blank\\\"&gt;Q1455822&lt;/a&gt;\", 0, 0], [\"VITIS - Journal of Grapevine Research\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q15756080\\\" target=\\\"_blank\\\"&gt;Q15756080&lt;/a&gt;\", 0, 0], [\"Journal of Applied Botany and Food Quality\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q15764825\\\" target=\\\"_blank\\\"&gt;Q15764825&lt;/a&gt;\", 0, 0], [\"Francia-Recensio\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q101247086\\\" target=\\\"_blank\\\"&gt;Q101247086&lt;/a&gt;\", 0, 0], [\"Heidelberger Beitr\\u00e4ge zum Finanz- und Steuerrecht\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q105103105\\\" target=\\\"_blank\\\"&gt;Q105103105&lt;/a&gt;\", 0, 0], [\"Informationspraxis\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q46478422\\\" target=\\\"_blank\\\"&gt;Q46478422&lt;/a&gt;\", 28, 2], [\"International Journal of Dream Research\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q96332444\\\" target=\\\"_blank\\\"&gt;Q96332444&lt;/a&gt;\", 0, 0], [\"Journal of Dynamic Decision Making\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q50817185\\\" target=\\\"_blank\\\"&gt;Q50817185&lt;/a&gt;\", 0, 0], [\"Arch\\u00e4ologischer Anzeiger\", \"Deutsches Arch\\u00e4ologisches Institut\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q636752\\\" target=\\\"_blank\\\"&gt;Q636752&lt;/a&gt;\", 0, 0], [\"Journal of Spatial Information Science\", \"JOSIS / TU Dresden\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q50814880\\\" target=\\\"_blank\\\"&gt;Q50814880&lt;/a&gt;\", 0, 0], [\"Cognitio\", \"ZHB Luzern\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q111049844\\\" target=\\\"_blank\\\"&gt;Q111049844&lt;/a&gt;\", 0, 0], [\"itdb - inter- und transdisziplin\\u00e4re Bildung\", \"ZHB Luzern\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q107074231\\\" target=\\\"_blank\\\"&gt;Q107074231&lt;/a&gt;\", 14, 0]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
+<table border="1" class="dataframe dataframe table">
+<thead>
+<tr style="text-align: right;">
+<th>Journal</th>
+<th>Partner</th>
+<th>Wikidata QID</th>
+<th>Articles</th>
+<th>Citations (P2860)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Journal of South Asian Linguistics</td>
+<td>KIM Universität Konstanz</td>
+<td><a href="https://www.wikidata.org/wiki/Q122948152" target="_blank">Q122948152</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Free Neuropathology</td>
+<td>WWU Münster</td>
+<td><a href="https://www.wikidata.org/wiki/Q108455809" target="_blank">Q108455809</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Jahrbuch für Christliche Sozialwissenschaften</td>
+<td>WWU Münster</td>
+<td><a href="https://www.wikidata.org/wiki/Q1678617" target="_blank">Q1678617</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Journal für Kulturpflanzen</td>
+<td>Julius Kühn-Institut</td>
+<td><a href="https://www.wikidata.org/wiki/Q1455822" target="_blank">Q1455822</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>VITIS - Journal of Grapevine Research</td>
+<td>Julius Kühn-Institut</td>
+<td><a href="https://www.wikidata.org/wiki/Q15756080" target="_blank">Q15756080</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Journal of Applied Botany and Food Quality</td>
+<td>Julius Kühn-Institut</td>
+<td><a href="https://www.wikidata.org/wiki/Q15764825" target="_blank">Q15764825</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Francia-Recensio</td>
+<td>heiJOURNALS Heidelberg</td>
+<td><a href="https://www.wikidata.org/wiki/Q101247086" target="_blank">Q101247086</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Heidelberger Beiträge zum Finanz- und Steuerrecht</td>
+<td>heiJOURNALS Heidelberg</td>
+<td><a href="https://www.wikidata.org/wiki/Q105103105" target="_blank">Q105103105</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Informationspraxis</td>
+<td>heiJOURNALS Heidelberg</td>
+<td><a href="https://www.wikidata.org/wiki/Q46478422" target="_blank">Q46478422</a></td>
+<td>28</td>
+<td>2</td>
+</tr>
+<tr>
+<td>International Journal of Dream Research</td>
+<td>heiJOURNALS Heidelberg</td>
+<td><a href="https://www.wikidata.org/wiki/Q96332444" target="_blank">Q96332444</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Journal of Dynamic Decision Making</td>
+<td>heiJOURNALS Heidelberg</td>
+<td><a href="https://www.wikidata.org/wiki/Q50817185" target="_blank">Q50817185</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Archäologischer Anzeiger</td>
+<td>Deutsches Archäologisches Institut</td>
+<td><a href="https://www.wikidata.org/wiki/Q636752" target="_blank">Q636752</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Journal of Spatial Information Science</td>
+<td>JOSIS / TU Dresden</td>
+<td><a href="https://www.wikidata.org/wiki/Q50814880" target="_blank">Q50814880</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Cognitio</td>
+<td>ZHB Luzern</td>
+<td><a href="https://www.wikidata.org/wiki/Q111049844" target="_blank">Q111049844</a></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>itdb - inter- und transdisziplinäre Bildung</td>
+<td>ZHB Luzern</td>
+<td><a href="https://www.wikidata.org/wiki/Q107074231" target="_blank">Q107074231</a></td>
+<td>14</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -8285,88 +8332,124 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_caf045aa_88c3_4910_b095_a721f05bcc5d"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_caf045aa_88c3_4910_b095_a721f05bcc5d:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "columnDefs": [{"className": "dt-left", "targets": [0]}], "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Journal</th>\n      <th>2022 Articles</th>\n      <th>Current Articles</th>\n      <th>Change</th>\n      <th>OpenAlex (2022)</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"Journal of South Asian Linguistics\", 0, 0, \"+0\", 0], [\"Free Neuropathology\", 0, 0, \"+0\", 0], [\"Jahrbuch f\\u00fcr Christliche Sozialwissensch...\", 0, 0, \"+0\", 850], [\"Journal f\\u00fcr Kulturpflanzen\", 0, 0, \"+0\", 558], [\"VITIS - Journal of Grapevine Research\", 0, 0, \"+0\", 1762], [\"Journal of Applied Botany and Food Quali...\", 3, 0, \"-3\", 419], [\"Francia-Recensio\", 1, 0, \"-1\", 1096], [\"Heidelberger Beitr\\u00e4ge zum Finanz- und St...\", 0, 0, \"+0\", 0], [\"Informationspraxis\", 55, 28, \"-27\", 43], [\"International Journal of Dream Research\", 0, 0, \"+0\", 352], [\"Journal of Dynamic Decision Making\", 0, 0, \"+0\", 18], [\"Arch\\u00e4ologischer Anzeiger\", 0, 0, \"+0\", 224], [\"Journal of Spatial Information Science\", 25, 0, \"-25\", 201], [\"Cognitio\", 31, 0, \"-31\", 0], [\"itdb - inter- und transdisziplin\\u00e4re Bild...\", 13, 14, \"+1\", 0]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
+<table border="1" class="dataframe dataframe table">
+<thead>
+<tr style="text-align: right;">
+<th>Journal</th>
+<th>2022 Articles</th>
+<th>Current Articles</th>
+<th>Change</th>
+<th>OpenAlex (2022)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Journal of South Asian Linguistics</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Free Neuropathology</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Jahrbuch für Christliche Sozialwissensch...</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>850</td>
+</tr>
+<tr>
+<td>Journal für Kulturpflanzen</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>558</td>
+</tr>
+<tr>
+<td>VITIS - Journal of Grapevine Research</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>1762</td>
+</tr>
+<tr>
+<td>Journal of Applied Botany and Food Quali...</td>
+<td>3</td>
+<td>0</td>
+<td>-3</td>
+<td>419</td>
+</tr>
+<tr>
+<td>Francia-Recensio</td>
+<td>1</td>
+<td>0</td>
+<td>-1</td>
+<td>1096</td>
+</tr>
+<tr>
+<td>Heidelberger Beiträge zum Finanz- und St...</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Informationspraxis</td>
+<td>55</td>
+<td>28</td>
+<td>-27</td>
+<td>43</td>
+</tr>
+<tr>
+<td>International Journal of Dream Research</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>352</td>
+</tr>
+<tr>
+<td>Journal of Dynamic Decision Making</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Archäologischer Anzeiger</td>
+<td>0</td>
+<td>0</td>
+<td>+0</td>
+<td>224</td>
+</tr>
+<tr>
+<td>Journal of Spatial Information Science</td>
+<td>25</td>
+<td>0</td>
+<td>-25</td>
+<td>201</td>
+</tr>
+<tr>
+<td>Cognitio</td>
+<td>31</td>
+<td>0</td>
+<td>-31</td>
+<td>0</td>
+</tr>
+<tr>
+<td>itdb - inter- und transdisziplinäre Bild...</td>
+<td>13</td>
+<td>14</td>
+<td>+1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -8557,91 +8640,6 @@ a.anchor-link {
 </table>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_6bc8d26f_6e97_40f1_82d0_8f8e1e63948a"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_6bc8d26f_6e97_40f1_82d0_8f8e1e63948a:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "columnDefs": [{"className": "dt-left", "targets": [0]}], "layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Journal</th>\n      <th>OpenAlex Articles</th>\n      <th>Wikidata Articles</th>\n    </tr>\n  </thead></table>", "data_json": "[[2, \"VITIS - Journal of Grapevine Research\", 1762, 0], [4, \"Francia-Recensio\", 1096, 0], [0, \"Jahrbuch f\\u00fcr Christliche Sozialwissenschaften\", 850, 0], [1, \"Journal f\\u00fcr Kulturpflanzen\", 558, 0], [3, \"Journal of Applied Botany and Food Quality\", 419, 0], [5, \"International Journal of Dream Research\", 352, 0], [6, \"Arch\\u00e4ologischer Anzeiger\", 224, 0], [7, \"Journal of Spatial Information Science\", 201, 0]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
@@ -8780,7 +8778,8 @@ a.anchor-link {
 <span class="s1">|--------|------:|</span>
 <span class="s1">| Successful | </span><span class="si">{</span><span class="n">successful</span><span class="si">}</span><span class="s1"> |</span>
 <span class="s1">| Pending | </span><span class="si">{</span><span class="n">pending</span><span class="si">}</span><span class="s1"> |</span>
-<span class="s1">| Invalid | </span><span class="si">{</span><span class="n">invalid</span><span class="si">}</span><span class="s1"> |</span>
+<span class="s1">| Invalid | </span><span class="si">{</span><span class="n">invalid</span><span class="si">}</span><span class="s1"> |**Funding**: BMBFTR (German Federal Ministry of Education and Research)  </span>
+
 <span class="s1">'''</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -8839,12 +8838,9 @@ a.anchor-link {
 <td>Pending</td>
 <td style="text-align:right">0</td>
 </tr>
-<tr>
-<td>Invalid</td>
-<td style="text-align:right">4</td>
-</tr>
 </tbody>
 </table>
+<p>| Invalid | 4 |<strong>Funding</strong>: BMBFTR (German Federal Ministry of Education and Research)</p>
 </div>
 </div>
 </div>
@@ -9012,91 +9008,6 @@ a.anchor-link {
 </table>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_206d26e4_8d8a_4a88_9ab8_5a5da41463d0"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_206d26e4_8d8a_4a88_9ab8_5a5da41463d0:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Issue</th>\n      <th>Title</th>\n      <th>Status</th>\n      <th>Created</th>\n      <th>Creator</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"&lt;a href=\\\"https://github.com/opencitations/crowdsourcing/issues/6\\\" target=\\\"_blank\\\"&gt;#6&lt;/a&gt;\", \"deposit localhost doi:10.1234/37fs2v66\", \"invalid\", \"2025-10-10\", \"GaziYucel\"], [\"&lt;a href=\\\"https://github.com/opencitations/crowdsourcing/issues/5\\\" target=\\\"_blank\\\"&gt;#5&lt;/a&gt;\", \"deposit localhost doi:10.1234/37fs2v66\", \"invalid\", \"2025-10-09\", \"GaziYucel\"], [\"&lt;a href=\\\"https://github.com/opencitations/crowdsourcing/issues/4\\\" target=\\\"_blank\\\"&gt;#4&lt;/a&gt;\", \"deposit localhost doi:10.1234/37fs2v66\", \"invalid\", \"2025-10-09\", \"GaziYucel\"], [\"&lt;a href=\\\"https://github.com/opencitations/crowdsourcing/issues/3\\\" target=\\\"_blank\\\"&gt;#3&lt;/a&gt;\", \"deposit localhost doi:10.0000/1rjphk47\", \"invalid\", \"2025-03-27\", \"GaziYucel\"], [\"&lt;a href=\\\"https://github.com/opencitations/crowdsourcing/pull/2\\\" target=\\\"_blank\\\"&gt;#2&lt;/a&gt;\", \"Add GaziYucel to whitelist.txt\", \"rejected\", \"2023-04-04\", \"GaziYucel\"]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
 </div>
 </div>
 </div>
@@ -9279,91 +9190,6 @@ a.anchor-link {
 </table>
 </div>
 </div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_84168701_cfbe_40f8_a429_01f005214245"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_84168701_cfbe_40f8_a429_01f005214245:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "columnDefs": [{"className": "dt-left", "targets": [0, 1]}], "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Journal</th>\n      <th>Partner Organization</th>\n      <th>Website</th>\n      <th>Wikidata</th>\n      <th>OJS Version</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"Journal of South Asian Linguistics\", \"KIM Universit\\u00e4t Konstanz\", \"&lt;a href=\\\"https://ojs.ub.uni-konstanz.de/jsal/\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q122948152\\\" target=\\\"_blank\\\"&gt;Q122948152&lt;/a&gt;\", \"3.3.0.14\"], [\"Free Neuropathology\", \"WWU M\\u00fcnster\", \"&lt;a href=\\\"https://www.uni-muenster.de/Ejournals/index.php/fnp\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q108455809\\\" target=\\\"_blank\\\"&gt;Q108455809&lt;/a&gt;\", \"3.3.0.13\"], [\"Jahrbuch f\\u00fcr Christliche Sozialwissenschaften\", \"WWU M\\u00fcnster\", \"&lt;a href=\\\"https://www.uni-muenster.de/Ejournals/index.php/jcsw\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q1678617\\\" target=\\\"_blank\\\"&gt;Q1678617&lt;/a&gt;\", \"3.3.0.13\"], [\"Journal f\\u00fcr Kulturpflanzen\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://ojs.openagrar.de/index.php/Kulturpflanzenjournal\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q1455822\\\" target=\\\"_blank\\\"&gt;Q1455822&lt;/a&gt;\", \"3.3.0.8\"], [\"VITIS - Journal of Grapevine Research\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://ojs.openagrar.de/index.php/VITIS\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q15756080\\\" target=\\\"_blank\\\"&gt;Q15756080&lt;/a&gt;\", \"3.3.0.8\"], [\"Journal of Applied Botany and Food Quality\", \"Julius K\\u00fchn-Institut\", \"&lt;a href=\\\"https://ojs.openagrar.de/index.php/JABFQ\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q15764825\\\" target=\\\"_blank\\\"&gt;Q15764825&lt;/a&gt;\", \"3.3.0.8\"], [\"Francia-Recensio\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://journals.ub.uni-heidelberg.de/index.php/frrec\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q101247086\\\" target=\\\"_blank\\\"&gt;Q101247086&lt;/a&gt;\", \"3.2.1.4\"], [\"Heidelberger Beitr\\u00e4ge zum Finanz- und Steuerrecht\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://journals.ub.uni-heidelberg.de/index.php/hbfsr\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q105103105\\\" target=\\\"_blank\\\"&gt;Q105103105&lt;/a&gt;\", \"3.2.1.4\"], [\"Informationspraxis\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://journals.ub.uni-heidelberg.de/index.php/ip\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q46478422\\\" target=\\\"_blank\\\"&gt;Q46478422&lt;/a&gt;\", \"3.2.1.4\"], [\"International Journal of Dream Research\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://journals.ub.uni-heidelberg.de/index.php/IJoDR\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q96332444\\\" target=\\\"_blank\\\"&gt;Q96332444&lt;/a&gt;\", \"3.2.1.4\"], [\"Journal of Dynamic Decision Making\", \"heiJOURNALS Heidelberg\", \"&lt;a href=\\\"https://journals.ub.uni-heidelberg.de/index.php/jddm\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q50817185\\\" target=\\\"_blank\\\"&gt;Q50817185&lt;/a&gt;\", \"3.2.1.4\"], [\"Arch\\u00e4ologischer Anzeiger\", \"Deutsches Arch\\u00e4ologisches Institut\", \"&lt;a href=\\\"https://publications.dainst.org/journals/index.php/aa\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q636752\\\" target=\\\"_blank\\\"&gt;Q636752&lt;/a&gt;\", \"3.4.0.6\"], [\"Journal of Spatial Information Science\", \"JOSIS / TU Dresden\", \"&lt;a href=\\\"https://josis.org\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q50814880\\\" target=\\\"_blank\\\"&gt;Q50814880&lt;/a&gt;\", \"3.3.0.6\"], [\"Cognitio\", \"ZHB Luzern\", \"&lt;a href=\\\"https://cognitio-zeitschrift.ch\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q111049844\\\" target=\\\"_blank\\\"&gt;Q111049844&lt;/a&gt;\", \"3.3.0.12\"], [\"itdb - inter- und transdisziplin\\u00e4re Bildung\", \"ZHB Luzern\", \"&lt;a href=\\\"https://www.itdb.ch\\\" target=\\\"_blank\\\"&gt;Link&lt;/a&gt;\", \"&lt;a href=\\\"https://www.wikidata.org/wiki/Q107074231\\\" target=\\\"_blank\\\"&gt;Q107074231&lt;/a&gt;\", \"3.3.0.12\"]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
@@ -9571,88 +9397,42 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<!--| quarto-html-table-processing: none -->
-<table id="itables_b3cf174c_6754_493f_81b1_a12d4692f01d"><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-    Loading ITables v2.6.2 from the <code>init_notebook_mode</code> cell...
-    (need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody></table>
-<script type="module">
-    (async () => {
-        async function init() {
-            const { ITable, jQuery: $ } = await window._itables_2_6_2;
-
-            document.querySelectorAll("#itables_b3cf174c_6754_493f_81b1_a12d4692f01d:not(.dataTable)").forEach(table => {
-                if (!(table instanceof HTMLTableElement))
-                    return;
-
-                let dt_args = {"classes": ["display", "compact"], "layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Metric</th>\n      <th>Value</th>\n      <th>Last Updated</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"KOMET Successful\", 0, \"2026-01-22\"], [\"KOMET Invalid\", 4, \"2026-01-22\"], [\"KOMET Issues\", 5, \"2026-01-22\"], [\"KOMET Pending\", 0, \"2026-01-22\"], [\"Total Crowdsourcing Issues\", 16, \"2026-01-22\"]]"};
-                new ITable(table, dt_args);
-            });
-        }
-
-        if (window._itables_2_6_2) {
-            init();
-        } else {
-            window.addEventListener("itables-2.6.2-ready", () => {
-                init();
-            });
-        }
-    })();
-</script>
+<table border="1" class="dataframe dataframe table">
+<thead>
+<tr style="text-align: right;">
+<th>Metric</th>
+<th>Value</th>
+<th>Last Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KOMET Successful</td>
+<td>0</td>
+<td>2026-01-30</td>
+</tr>
+<tr>
+<td>KOMET Invalid</td>
+<td>4</td>
+<td>2026-01-30</td>
+</tr>
+<tr>
+<td>KOMET Issues</td>
+<td>5</td>
+<td>2026-01-30</td>
+</tr>
+<tr>
+<td>KOMET Pending</td>
+<td>0</td>
+<td>2026-01-30</td>
+</tr>
+<tr>
+<td>Total Crowdsourcing Issues</td>
+<td>16</td>
+<td>2026-01-30</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -9664,18 +9444,10 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="5.-Next-Steps">5. Next Steps<a class="anchor-link" href="#5.-Next-Steps"> </a></h2><h3 id="Immediate-Actions">Immediate Actions<a class="anchor-link" href="#Immediate-Actions"> </a></h3><ol>
-<li><strong>OpenCitations focus</strong>: Monitor contributions and encourage more submissions from partner journals</li>
-<li><strong>Baseline established</strong>: Current Wikidata statistics captured for future comparison</li>
-<li><strong>Automated updates</strong>: This report runs monthly via GitHub Actions CI (1st of each month)</li>
-</ol>
-<h3 id="Future-Work">Future Work<a class="anchor-link" href="#Future-Work"> </a></h3><ul>
-<li>Explore OpenAIRE API for additional citation data</li>
-<li>Track additional accounts associated with KOMET software deposits</li>
-<li>Create visualization dashboards for trends over time</li>
-<li>Add Wikidata entries for journals without QIDs</li>
-<li>Track citation growth as journals adopt KOMET plugins</li>
-</ul>
+<h2 id="Status-and-Next-Steps">Status and Next Steps<a class="anchor-link" href="#Status-and-Next-Steps"> </a></h2><p>The notebook is able to run automatically on a monthly basis via GitHub Actions CI. This allows tracking progress over time as <strong>KOMET plugins are adopted by partner journals</strong> and as the <strong>OJS core's citations feature</strong> is utilized by more and more OJS instances.
+It establishes a baseline for future comparison, not only for Wikidata but also for OpenCitations contributions.
+The data included in this report is saved as machine readable data files (JSON) in the repository for future uptake by other tools or analyses.</p>
+<p>Ideas for future work are captures in the open development repository on GitHub: <a href="https://github.com/GeoinformationSystems/komet-report/">https://github.com/GeoinformationSystems/komet-report/</a>.</p>
 </div>
 </div>
 </div>
@@ -9686,14 +9458,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Funding">Funding<a class="anchor-link" href="#Funding"> </a></h2><p>This work is funded by the <strong>German Federal Ministry of Education and Research (BMBFTR)</strong> under grant number <strong>16TOA039</strong>.</p>
-<p>The KOMET project is part of the funding initiative "Förderung von Projekten zur Etablierung einer gelebten Open-Access-Kultur in der deutschen Forschungs- und Wissenschaftspraxis" (Funding for projects to establish a lived Open Access culture in German research and scientific practice).</p>
-<p><img alt="BMFTR Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/BMFTR_Logo.svg/320px-BMFTR_Logo.svg.png"/></p>
-<hr/>
-<h2 id="License-&amp;-Data-Sources">License &amp; Data Sources<a class="anchor-link" href="#License-&amp;-Data-Sources"> </a></h2><h3 id="This-Notebook">This Notebook<a class="anchor-link" href="#This-Notebook"> </a></h3><ul>
-<li><strong>Code</strong>: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></li>
-<li><strong>Report outputs</strong>: <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></li>
-</ul>
+<h2 id="License-&amp;-Data-Sources">License &amp; Data Sources<a class="anchor-link" href="#License-&amp;-Data-Sources"> </a></h2><h3 id="This-Notebook">This Notebook<a class="anchor-link" href="#This-Notebook"> </a></h3><p><strong>Code</strong>: <a href="https://creativecommons.org/publicdomain/zero/1.0/"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/88x31.png"/></a> <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></p>
+<p><strong>Report outputs</strong>: <a href="https://creativecommons.org/licenses/by/4.0/"><img alt="CC-BY" src="https://licensebuttons.net/l/by/4.0/88x31.png"/></a> <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></p>
 <h3 id="External-Data-Sources">External Data Sources<a class="anchor-link" href="#External-Data-Sources"> </a></h3><table>
 <thead>
 <tr>
@@ -9713,11 +9479,6 @@ a.anchor-link {
 <td>CC0 1.0</td>
 <td><a href="https://opencitations.net/about#licensing">OpenCitations Licensing</a></td>
 </tr>
-<tr>
-<td><strong>GitHub API</strong></td>
-<td>GitHub ToS</td>
-<td><a href="https://docs.github.com/en/site-policy/github-terms">GitHub Terms of Service</a></td>
-</tr>
 </tbody>
 </table>
 <h3 id="Citation">Citation<a class="anchor-link" href="#Citation"> </a></h3><div class="highlight"><pre><span></span><span class="nc">@software</span><span class="p">{</span><span class="nl">komet_report</span><span class="p">,</span>
@@ -9727,7 +9488,15 @@ a.anchor-link {
 <span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2024-2025}</span>
 <span class="p">}</span>
 </pre></div>
-<p><strong>Project Website</strong>: <a href="https://projects.tib.eu/komet">https://projects.tib.eu/komet</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
