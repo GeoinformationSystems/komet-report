@@ -900,6 +900,236 @@ def discover_partner_journals_wikidata() -> Dict[str, Any]:
     return results
 
 
+# =============================================================================
+# Geometry Fetching for Visualization
+# =============================================================================
+
+def parse_wkt_point(wkt_point: str) -> Optional[tuple]:
+    """
+    Parse WKT Point string to (latitude, longitude) tuple.
+
+    WKT format: "Point(longitude latitude)"
+    Note: WKT uses (lon, lat), not (lat, lon)
+    """
+    import re
+    match = re.match(r"Point\(([-\d.]+)\s+([-\d.]+)\)", wkt_point)
+    if match:
+        lon, lat = float(match.group(1)), float(match.group(2))
+        return (lat, lon)
+    return None
+
+
+def fetch_commons_geoshape(data_page_title: str) -> Optional[Dict]:
+    """
+    Fetch GeoJSON from a Wikimedia Commons Data page.
+
+    Args:
+        data_page_title: Title with or without "Data:" prefix
+                        (e.g., "Study_Area.map" or "Data:Study_Area.map")
+
+    Returns:
+        GeoJSON dict or None if fetch failed
+    """
+    # Clean up title
+    if data_page_title.startswith("Data:"):
+        data_page_title = data_page_title[5:]
+
+    # Try direct raw access first
+    raw_url = f"https://commons.wikimedia.org/wiki/Data:{data_page_title}?action=raw"
+
+    try:
+        response = requests.get(raw_url, headers=HEADERS, timeout=30)
+        if response.status_code == 200:
+            data = response.json()
+            # Commons Data files have structure: {"license": ..., "data": <geojson>}
+            return data.get("data", data)
+    except Exception as e:
+        print(f"Failed to fetch geoshape {data_page_title}: {e}")
+
+    return None
+
+
+def get_all_scholarly_geometries(limit: int = 500) -> List[Dict]:
+    """
+    Fetch all scholarly articles with any geospatial property.
+
+    Returns list of dicts with:
+    - qid: Wikidata QID
+    - label: Article title
+    - geom_type: 'point', 'bbox', or 'geoshape'
+    - geometry data (varies by type)
+    """
+    # Query for P625 (coordinates)
+    query_p625 = f"""
+    SELECT ?article ?articleLabel ?coord WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P625 ?coord .
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    LIMIT {limit}
+    """
+
+    # Query for P1332-P1335 (bounding box)
+    query_bbox = f"""
+    SELECT ?article ?articleLabel ?north ?south ?east ?west WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P1332 ?north .
+      ?article wdt:P1333 ?south .
+      ?article wdt:P1334 ?east .
+      ?article wdt:P1335 ?west .
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    LIMIT {limit}
+    """
+
+    # Query for P3896 (geoshape)
+    query_geoshape = f"""
+    SELECT ?article ?articleLabel ?geoshape WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P3896 ?geoshape .
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    LIMIT {limit}
+    """
+
+    results = []
+
+    # Fetch P625 results
+    p625_result = query_wikidata(query_p625, timeout=120, use_scholarly_endpoint=True)
+    if p625_result and p625_result.get("results", {}).get("bindings"):
+        for item in p625_result["results"]["bindings"]:
+            qid = item.get("article", {}).get("value", "").split("/")[-1]
+            label = item.get("articleLabel", {}).get("value", "Unknown")
+            coord = item.get("coord", {}).get("value", "")
+
+            parsed = parse_wkt_point(coord)
+            if parsed:
+                lat, lon = parsed
+                results.append({
+                    "qid": qid,
+                    "label": label,
+                    "geom_type": "point",
+                    "lat": lat,
+                    "lon": lon
+                })
+
+    # Fetch bbox results
+    # Note: P1332-P1335 return WKT Point format, need to extract lat/lon appropriately
+    bbox_result = query_wikidata(query_bbox, timeout=120, use_scholarly_endpoint=True)
+    if bbox_result and bbox_result.get("results", {}).get("bindings"):
+        for item in bbox_result["results"]["bindings"]:
+            qid = item.get("article", {}).get("value", "").split("/")[-1]
+            label = item.get("articleLabel", {}).get("value", "Unknown")
+
+            try:
+                # Parse WKT Points - extract lat from N/S points, lon from E/W points
+                north_wkt = item.get("north", {}).get("value", "")
+                south_wkt = item.get("south", {}).get("value", "")
+                east_wkt = item.get("east", {}).get("value", "")
+                west_wkt = item.get("west", {}).get("value", "")
+
+                north_parsed = parse_wkt_point(north_wkt)
+                south_parsed = parse_wkt_point(south_wkt)
+                east_parsed = parse_wkt_point(east_wkt)
+                west_parsed = parse_wkt_point(west_wkt)
+
+                if all([north_parsed, south_parsed, east_parsed, west_parsed]):
+                    # Extract: lat from N/S points, lon from E/W points
+                    north = north_parsed[0]  # latitude
+                    south = south_parsed[0]  # latitude
+                    east = east_parsed[1]    # longitude (second element after swap)
+                    west = west_parsed[1]    # longitude
+
+                    results.append({
+                        "qid": qid,
+                        "label": label,
+                        "geom_type": "bbox",
+                        "north": north,
+                        "south": south,
+                        "east": east,
+                        "west": west
+                    })
+            except (ValueError, TypeError, IndexError):
+                continue
+
+    # Fetch geoshape results
+    geoshape_result = query_wikidata(query_geoshape, timeout=120, use_scholarly_endpoint=True)
+    if geoshape_result and geoshape_result.get("results", {}).get("bindings"):
+        for item in geoshape_result["results"]["bindings"]:
+            qid = item.get("article", {}).get("value", "").split("/")[-1]
+            label = item.get("articleLabel", {}).get("value", "Unknown")
+            geoshape_uri = item.get("geoshape", {}).get("value", "")
+
+            # Extract filename from URI
+            if geoshape_uri:
+                filename = geoshape_uri.split("/")[-1]
+                if filename.startswith("Data:"):
+                    filename = filename[5:]
+
+                results.append({
+                    "qid": qid,
+                    "label": label,
+                    "geom_type": "geoshape",
+                    "geoshape_file": filename
+                })
+
+    return results
+
+
+def create_geometry_geodataframe(geometries: List[Dict]) -> Any:
+    """
+    Convert geometry list to a GeoPandas GeoDataFrame.
+
+    Requires geopandas and shapely to be installed.
+    Returns None if dependencies not available.
+    """
+    try:
+        import geopandas as gpd
+        from shapely.geometry import Point, box, shape
+    except ImportError:
+        print("GeoPandas/Shapely not available")
+        return None
+
+    features = []
+
+    for geom in geometries:
+        geom_type = geom.get("geom_type")
+        geometry = None
+
+        if geom_type == "point":
+            geometry = Point(geom["lon"], geom["lat"])
+
+        elif geom_type == "bbox":
+            geometry = box(
+                geom["west"], geom["south"],
+                geom["east"], geom["north"]
+            )
+
+        elif geom_type == "geoshape":
+            geojson = fetch_commons_geoshape(geom.get("geoshape_file", ""))
+            if geojson:
+                try:
+                    geometry = shape(geojson)
+                except Exception:
+                    continue
+
+        if geometry:
+            features.append({
+                "qid": geom.get("qid"),
+                "label": geom.get("label"),
+                "geom_type": geom_type,
+                "geometry": geometry
+            })
+
+    if not features:
+        return gpd.GeoDataFrame(
+            columns=["qid", "label", "geom_type", "geometry"],
+            crs="EPSG:4326"
+        )
+
+    return gpd.GeoDataFrame(features, crs="EPSG:4326")
+
+
 if __name__ == "__main__":
     # Quick test of the helper functions
     print("Testing Wikidata P1343 query...")

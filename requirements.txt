@@ -5,3 +5,8 @@ nbconvert
 pandas
 tabulate
 matplotlib
+
+# Geospatial visualization (optional - map will be skipped if not installed)
+geopandas
+cartopy
+shapely

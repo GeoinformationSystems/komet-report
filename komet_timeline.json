@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created": "2026-01-22T11:30:11.762572Z",
-    "last_updated": "2026-02-02T14:17:32.299993Z",
+    "last_updated": "2026-02-03T11:53:57.257909Z",
     "version": "2.0",
     "description": "KOMET project evaluation metrics timeline"
   },
@@ -338,6 +338,76 @@
         "description": "Wikidata items with KOMET as source",
         "notes": "Items with KOMET in P1343 source",
         "unit": "count"
+      },
+      "geospatial": {
+        "direct_coordinates_p625": {
+          "series": [
+            {
+              "t": "2026-02-02T18:30:43.219031Z",
+              "v": 46
+            }
+          ],
+          "name": "Direct Coordinates (P625)",
+          "description": "Scholarly articles with coordinate location property",
+          "unit": "count"
+        },
+        "bounding_box": {
+          "series": [
+            {
+              "t": "2026-02-02T18:30:43.219135Z",
+              "v": 1
+            }
+          ],
+          "name": "Bounding Box (P1332-P1335)",
+          "description": "Scholarly articles with bounding box properties",
+          "unit": "count"
+        },
+        "geographic_main_subject": {
+          "series": [
+            {
+              "t": "2026-02-02T18:30:43.219206Z",
+              "v": 5
+            }
+          ],
+          "name": "Geographic Main Subject",
+          "description": "Scholarly articles with main subject linking to geographic entity",
+          "unit": "count"
+        },
+        "geoshape_p3896": {
+          "series": [
+            {
+              "t": "2026-02-02T19:31:43.614324Z",
+              "v": 0
+            }
+          ],
+          "name": "GeoShape (P3896)",
+          "description": "Scholarly articles with geoshape (GeoJSON polygon/line)",
+          "unit": "count"
+        }
+      },
+      "temporal": {
+        "start_time_p580": {
+          "series": [
+            {
+              "t": "2026-02-02T18:30:43.219269Z",
+              "v": 11
+            }
+          ],
+          "name": "Start Time (P580)",
+          "description": "Scholarly articles with study period start time",
+          "unit": "count"
+        },
+        "end_time_p582": {
+          "series": [
+            {
+              "t": "2026-02-02T18:30:43.219331Z",
+              "v": 9
+            }
+          ],
+          "name": "End Time (P582)",
+          "description": "Scholarly articles with study period end time",
+          "unit": "count"
+        }
       }
     },
     "opencitations": {

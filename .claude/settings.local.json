@@ -31,7 +31,13 @@
       "Bash(gh pr view:*)",
       "Bash(pandoc:*)",
       "Bash(.venv/bin/pip install:*)",
-      "Bash(.venv/bin/jupyter nbconvert:*)"
+      "Bash(.venv/bin/jupyter nbconvert:*)",
+      "WebFetch(domain:pythongis.org)",
+      "WebFetch(domain:scitools.org.uk)",
+      "WebFetch(domain:geopandas.org)",
+      "WebFetch(domain:api.opencitations.net)",
+      "WebFetch(domain:opencitations.net)",
+      "WebFetch(domain:www.crossref.org)"
     ]
   }
 }
