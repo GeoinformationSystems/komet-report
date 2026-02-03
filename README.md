@@ -258,19 +258,28 @@ The GitHub Actions workflow (`.github/workflows/update-report.yml`) automates re
 
 The workflow runs automatically on the 1st of each month at 06:00 UTC and can be triggered manually via the GitHub Actions UI.
 
-### Annual Releases
+### Releases
 
-A separate workflow (`.github/workflows/annual-release.yml`) creates a GitHub release at the end of each year:
+The CI workflow supports creating GitHub releases both automatically and manually.
 
-- Runs automatically on December 31st at 23:00 UTC
-- Generates fresh PDF report with year-end data
-- Creates release `vYYYY` with:
-  - `komet_report.pdf` - PDF report for offline reading
-  - `komet_report_data.json` - Machine-readable metrics snapshot
-  - `komet_timeline.json` - Historical time series data
-- Includes key metrics in release notes
+**Automatic year-end release:**
+- Runs on December 31st at 23:00 UTC
+- Creates release with tag `vYYYY` (e.g., `v2025`)
+- Includes `komet_report.pdf` and `index.html` as assets
 
-Can also be triggered manually to create releases for past years.
+**Manual release (for first release or out-of-schedule releases):**
+
+1. Go to **Actions** → **Update KOMET Report**
+2. Click **Run workflow**
+3. Check **Create a GitHub release**
+4. Optionally set a custom **Release tag** (e.g., `v2024`, `v2025.1`, `v2025-interim`)
+   - Leave empty for auto-generated `vYYYY` tag
+   - If the tag already exists, `.1`, `.2`, etc. is appended automatically
+5. Click **Run workflow**
+
+**Release assets:**
+- `komet_report.pdf` - PDF version of the evaluation report
+- `index.html` - Interactive HTML version (also available via GitHub Pages)
 
 ## Funding
 

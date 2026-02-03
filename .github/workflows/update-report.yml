@@ -4,8 +4,19 @@ on:
   schedule:
     # Run on the 1st of each month at 06:00 UTC
     - cron: '0 6 1 * *'
+    # Run on December 31st at 23:00 UTC for year-end release
+    - cron: '0 23 31 12 *'
   workflow_dispatch:
     # Allow manual trigger from GitHub UI
+    inputs:
+      create_release:
+        description: 'Create a GitHub release'
+        type: boolean
+        default: false
+      release_tag:
+        description: 'Release tag (e.g., v2024, v2024.1). Leave empty for auto-generated year tag.'
+        type: string
+        default: ''
 
 jobs:
   update-report:
@@ -71,3 +82,68 @@ jobs:
           git add komet_timeline.json komet_report_data.json komet_evaluation.ipynb docs/index.html docs/komet_report.pdf
           git commit -m "Update KOMET report data ($(date -u +%Y-%m))"
           git push
+
+      - name: Determine if release should be created
+        id: release_check
+        run: |
+          # Check if this is the year-end scheduled run (Dec 31)
+          if [[ "${{ github.event.schedule }}" == "0 23 31 12 *" ]]; then
+            echo "create_release=true" >> $GITHUB_OUTPUT
+            echo "Release triggered by year-end schedule"
+          # Check if manual trigger requested a release
+          elif [[ "${{ github.event.inputs.create_release }}" == "true" ]]; then
+            echo "create_release=true" >> $GITHUB_OUTPUT
+            echo "Release triggered manually"
+          else
+            echo "create_release=false" >> $GITHUB_OUTPUT
+            echo "No release requested"
+          fi
+
+      - name: Create GitHub release
+        if: steps.release_check.outputs.create_release == 'true'
+        run: |
+          # Determine release tag
+          if [[ -n "${{ github.event.inputs.release_tag }}" ]]; then
+            TAG="${{ github.event.inputs.release_tag }}"
+          else
+            # Auto-generate year-based tag
+            YEAR=$(date -u +%Y)
+            TAG="v${YEAR}"
+            # Check if tag already exists, append .1, .2, etc. if needed
+            COUNTER=0
+            ORIGINAL_TAG="${TAG}"
+            while gh release view "${TAG}" > /dev/null 2>&1; do
+              COUNTER=$((COUNTER + 1))
+              TAG="${ORIGINAL_TAG}.${COUNTER}"
+            done
+          fi
+
+          echo "Creating release with tag: ${TAG}"
+
+          # Generate release notes
+          REPORT_DATE=$(date -u +"%B %Y")
+          NOTES="## KOMET Evaluation Report - ${REPORT_DATE}
+
+          This release contains the KOMET project evaluation report tracking contributions to the open metadata commons.
+
+          ### Included Files
+          - **komet_report.pdf** - PDF version of the evaluation report
+          - **index.html** - Interactive HTML version (also available at GitHub Pages)
+
+          ### Report Contents
+          - OpenCitations crowdsourcing contributions from KOMET partners
+          - OpenCitations Index citation statistics for partner journals
+          - Wikidata scholarly graph analysis (citations, geospatial metadata)
+
+          ---
+          *Generated automatically by the KOMET Report CI pipeline.*"
+
+          gh release create "${TAG}" \
+            --title "KOMET Report ${TAG}" \
+            --notes "${NOTES}" \
+            docs/komet_report.pdf \
+            docs/index.html
+
+          echo "Release ${TAG} created successfully"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
