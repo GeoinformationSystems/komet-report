@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created": "2026-01-22T11:30:11.762572Z",
-    "last_updated": "2026-02-03T11:53:57.257909Z",
+    "last_updated": "2026-02-03T13:56:01.406779Z",
     "version": "2.0",
     "description": "KOMET project evaluation metrics timeline"
   },
@@ -461,6 +461,177 @@
         ],
         "name": "KOMET Invalid",
         "unit": "count"
+      },
+      "index": {
+        "Q122948152": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:40.136640Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Journal of South Asi)",
+            "description": "Citations in OpenCitations Index for Journal of South Asian Linguistics",
+            "unit": "count"
+          }
+        },
+        "Q108455809": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:41.097737Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Free Neuropathology)",
+            "description": "Citations in OpenCitations Index for Free Neuropathology",
+            "unit": "count"
+          }
+        },
+        "Q1455822": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:42.727422Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Journal für Kulturpf)",
+            "description": "Citations in OpenCitations Index for Journal für Kulturpflanzen",
+            "unit": "count"
+          }
+        },
+        "Q15756080": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:43.775071Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (VITIS - Journal of G)",
+            "description": "Citations in OpenCitations Index for VITIS - Journal of Grapevine Research",
+            "unit": "count"
+          }
+        },
+        "Q15764825": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:45.898082Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Journal of Applied B)",
+            "description": "Citations in OpenCitations Index for Journal of Applied Botany and Food Quality",
+            "unit": "count"
+          }
+        },
+        "Q101247086": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:47.299028Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Francia-Recensio)",
+            "description": "Citations in OpenCitations Index for Francia-Recensio",
+            "unit": "count"
+          }
+        },
+        "Q46478422": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:48.610358Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Informationspraxis)",
+            "description": "Citations in OpenCitations Index for Informationspraxis",
+            "unit": "count"
+          }
+        },
+        "Q96332444": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:49.605582Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (International Journa)",
+            "description": "Citations in OpenCitations Index for International Journal of Dream Research",
+            "unit": "count"
+          }
+        },
+        "Q50817185": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:50.623870Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Journal of Dynamic D)",
+            "description": "Citations in OpenCitations Index for Journal of Dynamic Decision Making",
+            "unit": "count"
+          }
+        },
+        "Q636752": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:51.627327Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Archäologischer Anze)",
+            "description": "Citations in OpenCitations Index for Archäologischer Anzeiger",
+            "unit": "count"
+          }
+        },
+        "Q50814880": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:52.623998Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Journal of Spatial I)",
+            "description": "Citations in OpenCitations Index for Journal of Spatial Information Science",
+            "unit": "count"
+          }
+        },
+        "Q111049844": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:53.678982Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Cognitio)",
+            "description": "Citations in OpenCitations Index for Cognitio",
+            "unit": "count"
+          }
+        },
+        "Q107074231": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-02-03T13:43:54.687035Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (itdb - inter- und tr)",
+            "description": "Citations in OpenCitations Index for itdb - inter- und transdisziplinäre Bildung",
+            "unit": "count"
+          }
+        }
       }
     }
   }

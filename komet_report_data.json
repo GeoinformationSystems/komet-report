@@ -1,5 +1,5 @@
 {
-  "report_timestamp": "2026-02-03T11:53:06.598370Z",
+  "report_timestamp": "2026-02-03T13:55:31.950793Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
@@ -14,14 +14,113 @@
     "partner_journals_total_citations_p2860": 2
   },
   "opencitations": {
-    "total_crowdsourcing_issues": 15,
-    "komet_contributions": 4,
-    "komet_successful": 0,
-    "komet_pending": 0,
-    "komet_invalid": 4,
-    "komet_contributors": [
-      "GaziYucel"
-    ]
+    "crowdsourcing": {
+      "total_issues": 15,
+      "komet_contributions": 4,
+      "komet_successful": 0,
+      "komet_pending": 0,
+      "komet_invalid": 4,
+      "komet_contributors": [
+        "GaziYucel"
+      ]
+    },
+    "index": {
+      "total_citations": 0,
+      "journals_with_issn": 13,
+      "journals_with_data": 0,
+      "journal_stats": [
+        {
+          "name": "Journal of South Asian Linguistics",
+          "qid": "Q122948152",
+          "issn": "1947-8232",
+          "oc_citations": 0
+        },
+        {
+          "name": "Free Neuropathology",
+          "qid": "Q108455809",
+          "issn": "2699-4445",
+          "oc_citations": 0
+        },
+        {
+          "name": "Jahrbuch für Christliche Sozialwissenschaften",
+          "qid": "Q1678617",
+          "issn": null,
+          "oc_citations": null
+        },
+        {
+          "name": "Journal für Kulturpflanzen",
+          "qid": "Q1455822",
+          "issn": "1867-0911",
+          "oc_citations": 0
+        },
+        {
+          "name": "VITIS - Journal of Grapevine Research",
+          "qid": "Q15756080",
+          "issn": "0042-7500",
+          "oc_citations": 0
+        },
+        {
+          "name": "Journal of Applied Botany and Food Quality",
+          "qid": "Q15764825",
+          "issn": "0066-1759",
+          "oc_citations": 0
+        },
+        {
+          "name": "Francia-Recensio",
+          "qid": "Q101247086",
+          "issn": "2425-3510",
+          "oc_citations": 0
+        },
+        {
+          "name": "Heidelberger Beiträge zum Finanz- und Steuerrecht",
+          "qid": "Q105103105",
+          "issn": null,
+          "oc_citations": null
+        },
+        {
+          "name": "Informationspraxis",
+          "qid": "Q46478422",
+          "issn": "2297-3249",
+          "oc_citations": 0
+        },
+        {
+          "name": "International Journal of Dream Research",
+          "qid": "Q96332444",
+          "issn": "1866-7953",
+          "oc_citations": 0
+        },
+        {
+          "name": "Journal of Dynamic Decision Making",
+          "qid": "Q50817185",
+          "issn": "2365-8037",
+          "oc_citations": 0
+        },
+        {
+          "name": "Archäologischer Anzeiger",
+          "qid": "Q636752",
+          "issn": "0003-8105",
+          "oc_citations": 0
+        },
+        {
+          "name": "Journal of Spatial Information Science",
+          "qid": "Q50814880",
+          "issn": "1948-660X",
+          "oc_citations": 0
+        },
+        {
+          "name": "Cognitio",
+          "qid": "Q111049844",
+          "issn": "2624-8417",
+          "oc_citations": 0
+        },
+        {
+          "name": "itdb - inter- und transdisziplinäre Bildung",
+          "qid": "Q107074231",
+          "issn": "2673-7671",
+          "oc_citations": 0
+        }
+      ]
+    }
   },
   "partner_journals": [
     {

@@ -89,8 +89,8 @@ pdf: install
 	rm -rf docs/report_files docs/images
 	@echo "PDF report generated: docs/komet_report.pdf"
 
-# Run notebook and generate HTML (full update)
-update: run html
+# Run notebook and generate HTML and PDF (full update)
+update: run html pdf
 
 # Check if notebook can execute without errors (dry run)
 check: install
@@ -106,16 +106,9 @@ clean:
 	rm -f docs/komet_report.pdf
 	rm -f komet_report_data.json
 
-# Clean all generated files including timeline (preserves venv)
-clean-all: clean
-	rm -f komet_timeline.json
-
 # Remove virtual environment
 clean-venv:
 	rm -rf $(VENV)
-
-# Full clean including virtual environment
-distclean: clean-all clean-venv
 
 # Serve docs locally for preview
 serve: install
@@ -130,13 +123,11 @@ help:
 	@echo "  make run        - Execute notebook (updates data files)"
 	@echo "  make html       - Generate HTML report in docs/"
 	@echo "  make pdf        - Generate PDF report using typst (requires typst CLI)"
-	@echo "  make update     - Run notebook and generate HTML"
+	@echo "  make update     - Run notebook and generate HTML and PDF"
 	@echo "  make check      - Verify notebook executes without errors"
 	@echo "  make serve      - Start local HTTP server for preview"
 	@echo "  make clean      - Remove generated HTML and report data"
-	@echo "  make clean-all  - Remove all generated files including timeline"
 	@echo "  make clean-venv - Remove virtual environment"
-	@echo "  make distclean  - Remove everything (clean-all + clean-venv)"
 	@echo "  make help       - Show this help message"
 	@echo ""
 	@echo "Virtual environment: $(VENV)/"

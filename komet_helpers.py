@@ -17,6 +17,7 @@ from datetime import datetime
 # =============================================================================
 
 WIKIDATA_SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
+WIKIDATA_SCHOLARLY_ENDPOINT = "https://query-scholarly.wikidata.org/sparql"
 GITHUB_API_BASE = "https://api.github.com"
 OPENCITATIONS_REPO = "opencitations/crowdsourcing"
 
@@ -212,20 +213,23 @@ def get_all_journal_qids() -> List[str]:
 # Wikidata SPARQL Queries
 # =============================================================================
 
-def query_wikidata(sparql_query: str, timeout: int = 60) -> Optional[Dict]:
+def query_wikidata(sparql_query: str, timeout: int = 60, use_scholarly_endpoint: bool = False) -> Optional[Dict]:
     """
     Execute a SPARQL query against the Wikidata Query Service.
 
     Args:
         sparql_query: The SPARQL query string
         timeout: Request timeout in seconds
+        use_scholarly_endpoint: If True, use the scholarly-specific endpoint
+                                (better for queries focused on Q13442814 scholarly articles)
 
     Returns:
         JSON response as dict, or None if query fails
     """
+    endpoint = WIKIDATA_SCHOLARLY_ENDPOINT if use_scholarly_endpoint else WIKIDATA_SPARQL_ENDPOINT
     try:
         response = requests.get(
-            WIKIDATA_SPARQL_ENDPOINT,
+            endpoint,
             params={"query": sparql_query, "format": "json"},
             headers=HEADERS,
             timeout=timeout
@@ -345,6 +349,102 @@ def search_komet_provenance_wikidata() -> List[Dict]:
     if result and result.get("results", {}).get("bindings"):
         return result["results"]["bindings"]
     return []
+
+
+# =============================================================================
+# OpenCitations Index API Functions
+# =============================================================================
+
+OPENCITATIONS_API_BASE = "https://api.opencitations.net/index/v2"
+
+
+def get_journal_citation_count_opencitations(issn: str) -> Optional[int]:
+    """
+    Get total incoming citations for all articles in a journal from OpenCitations.
+
+    Uses the venue-citation-count endpoint which returns the number of
+    citations to all articles published in the journal identified by ISSN.
+
+    Args:
+        issn: Journal ISSN (e.g., "0138-9130")
+
+    Returns:
+        Total citation count or None if query failed
+    """
+    if not issn:
+        return None
+
+    # Clean ISSN (remove any prefix)
+    issn = issn.replace("issn:", "").strip()
+
+    url = f"{OPENCITATIONS_API_BASE}/venue-citation-count/issn:{issn}"
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": HEADERS["User-Agent"]
+    }
+
+    try:
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        data = response.json()
+        if data and len(data) > 0 and "count" in data[0]:
+            return int(data[0]["count"])
+    except requests.exceptions.RequestException as e:
+        print(f"OpenCitations API error for ISSN {issn}: {e}")
+    except (ValueError, KeyError, IndexError):
+        pass
+
+    return None
+
+
+def get_article_citation_count_opencitations(doi: str) -> Optional[int]:
+    """
+    Get incoming citation count for a specific article from OpenCitations.
+
+    Args:
+        doi: Article DOI (e.g., "10.1186/1756-8722-6-59")
+
+    Returns:
+        Citation count or None if query failed
+    """
+    if not doi:
+        return None
+
+    # Clean DOI
+    doi = doi.replace("doi:", "").replace("https://doi.org/", "").strip()
+
+    url = f"{OPENCITATIONS_API_BASE}/citation-count/doi:{doi}"
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": HEADERS["User-Agent"]
+    }
+
+    try:
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        data = response.json()
+        if data and len(data) > 0 and "count" in data[0]:
+            return int(data[0]["count"])
+    except requests.exceptions.RequestException as e:
+        print(f"OpenCitations API error for DOI {doi}: {e}")
+    except (ValueError, KeyError, IndexError):
+        pass
+
+    return None
+
+
+def get_journal_opencitations_stats(issn: str) -> Dict[str, Any]:
+    """
+    Get OpenCitations statistics for a journal.
+
+    Returns:
+        Dict with citation_count and query_timestamp
+    """
+    return {
+        "issn": issn,
+        "citation_count": get_journal_citation_count_opencitations(issn),
+        "query_timestamp": format_timestamp()
+    }
 
 
 # =============================================================================
@@ -615,6 +715,213 @@ def get_journal_stats_wikidata(journal_qid: str) -> Dict[str, Any]:
     }
 
 
+def get_journal_metadata_wikidata(journal_qid: str) -> Dict[str, Any]:
+    """
+    Get journal metadata from Wikidata including ISSN and publisher.
+
+    Properties queried:
+    - P236: ISSN
+    - P123: publisher
+    - P1476: title
+    """
+    query = f"""
+    SELECT ?journal ?journalLabel ?issn ?publisher ?publisherLabel ?title WHERE {{
+      BIND(wd:{journal_qid} AS ?journal)
+      OPTIONAL {{ ?journal wdt:P236 ?issn . }}
+      OPTIONAL {{ ?journal wdt:P123 ?publisher . }}
+      OPTIONAL {{ ?journal wdt:P1476 ?title . }}
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en,de" . }}
+    }}
+    LIMIT 1
+    """
+    result = query_wikidata(query, timeout=30)
+
+    metadata = {
+        "qid": journal_qid,
+        "name": None,
+        "issn": None,
+        "publisher": None,
+        "publisher_qid": None
+    }
+
+    if result and result.get("results", {}).get("bindings"):
+        binding = result["results"]["bindings"][0]
+        metadata["name"] = binding.get("journalLabel", {}).get("value")
+        metadata["issn"] = binding.get("issn", {}).get("value")
+        metadata["publisher"] = binding.get("publisherLabel", {}).get("value")
+        if binding.get("publisher"):
+            metadata["publisher_qid"] = binding["publisher"]["value"].split("/")[-1]
+
+    return metadata
+
+
+def get_journal_metadata_crossref(issn: str) -> Optional[Dict[str, Any]]:
+    """
+    Get journal metadata from Crossref API using ISSN.
+
+    Returns publisher name and other metadata not available in Wikidata.
+    """
+    if not issn:
+        return None
+
+    url = f"https://api.crossref.org/journals/{issn}"
+    headers = {
+        "User-Agent": "KOMET-Report/1.0 (https://projects.tib.eu/komet; mailto:daniel.nuest@tu-dresden.de)"
+    }
+
+    try:
+        response = requests.get(url, headers=headers, timeout=15)
+        if response.status_code == 200:
+            data = response.json()
+            message = data.get("message", {})
+            return {
+                "title": message.get("title"),
+                "publisher": message.get("publisher"),
+                "issn": message.get("ISSN", []),
+                "subjects": message.get("subjects", []),
+                "counts": message.get("counts", {})
+            }
+    except requests.exceptions.RequestException:
+        pass
+
+    return None
+
+
+def count_journal_articles_with_coordinates(journal_qid: str) -> Optional[int]:
+    """
+    Count articles from a journal that have coordinate location (P625).
+    Uses scholarly endpoint for better performance.
+    """
+    query = f"""
+    SELECT (COUNT(?article) AS ?count) WHERE {{
+      ?article wdt:P1433 wd:{journal_qid} .
+      ?article wdt:P625 ?coord .
+    }}
+    """
+    result = query_wikidata(query, timeout=60, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_journal_articles_with_bounding_box(journal_qid: str) -> Optional[int]:
+    """
+    Count articles from a journal that have any bounding box property (P1332-P1335).
+    """
+    query = f"""
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {{
+      ?article wdt:P1433 wd:{journal_qid} .
+      {{ ?article wdt:P1332 ?n . }}
+      UNION {{ ?article wdt:P1333 ?s . }}
+      UNION {{ ?article wdt:P1334 ?e . }}
+      UNION {{ ?article wdt:P1335 ?w . }}
+    }}
+    """
+    result = query_wikidata(query, timeout=60, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_journal_articles_with_temporal_scope(journal_qid: str) -> Optional[int]:
+    """
+    Count articles from a journal that have temporal scope (P580 or P582).
+    """
+    query = f"""
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {{
+      ?article wdt:P1433 wd:{journal_qid} .
+      {{ ?article wdt:P580 ?start . }}
+      UNION {{ ?article wdt:P582 ?end . }}
+    }}
+    """
+    result = query_wikidata(query, timeout=60, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_journal_articles_with_geographic_subject(journal_qid: str) -> Optional[int]:
+    """
+    Count articles from a journal where main subject (P921) links to
+    an item with coordinates.
+    """
+    query = f"""
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {{
+      ?article wdt:P1433 wd:{journal_qid} .
+      ?article wdt:P921 ?subject .
+      ?subject wdt:P625 ?coord .
+    }}
+    """
+    result = query_wikidata(query, timeout=90, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def get_journal_geospatial_stats(journal_qid: str) -> Dict[str, Any]:
+    """
+    Get comprehensive geospatial/temporal statistics for a journal.
+
+    Returns counts for:
+    - Articles with direct coordinates (P625)
+    - Articles with bounding box (P1332-P1335)
+    - Articles with temporal scope (P580/P582)
+    - Articles with geographic main subject (P921 → geo item)
+    """
+    return {
+        "qid": journal_qid,
+        "articles_with_coordinates": count_journal_articles_with_coordinates(journal_qid),
+        "articles_with_bounding_box": count_journal_articles_with_bounding_box(journal_qid),
+        "articles_with_temporal_scope": count_journal_articles_with_temporal_scope(journal_qid),
+        "articles_with_geo_subject": count_journal_articles_with_geographic_subject(journal_qid),
+        "query_timestamp": format_timestamp()
+    }
+
+
+def get_journal_full_metadata(journal: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Get full metadata for a journal combining local config, Wikidata, and Crossref.
+
+    Args:
+        journal: Journal dict from COLLABORATION_PARTNERS with at least 'wikidata_qid'
+
+    Returns:
+        Enhanced journal metadata with ISSN and publisher from multiple sources
+    """
+    qid = journal.get("wikidata_qid")
+
+    # Start with local config data
+    result = {
+        "name": journal.get("name"),
+        "qid": qid,
+        "partner": journal.get("partner"),
+        "url": journal.get("url"),
+        "issn": None,
+        "publisher": None,
+        "publisher_source": None
+    }
+
+    # Enhance from Wikidata
+    if qid:
+        wd_meta = get_journal_metadata_wikidata(qid)
+        if wd_meta.get("issn"):
+            result["issn"] = wd_meta["issn"]
+        if wd_meta.get("publisher"):
+            result["publisher"] = wd_meta["publisher"]
+            result["publisher_source"] = "wikidata"
+        if not result["name"] and wd_meta.get("name"):
+            result["name"] = wd_meta["name"]
+
+    # Enhance from Crossref if we have ISSN but no publisher
+    if result["issn"] and not result["publisher"]:
+        cr_meta = get_journal_metadata_crossref(result["issn"])
+        if cr_meta and cr_meta.get("publisher"):
+            result["publisher"] = cr_meta["publisher"]
+            result["publisher_source"] = "crossref"
+
+    return result
+
+
 # =============================================================================
 # Timeline Logging Functions (v2.0 - Hierarchical Format)
 # =============================================================================
@@ -854,6 +1161,251 @@ def load_json(filepath: str) -> Any:
 def format_timestamp() -> str:
     """Return current timestamp in ISO format."""
     return datetime.utcnow().isoformat() + "Z"
+
+
+# =============================================================================
+# Geospatial & Temporal Metadata Queries for Scholarly Works
+# Based on OPTIMAP export model and Wikidata conventions
+# =============================================================================
+
+# Properties used for geospatial/temporal metadata (from OPTIMAP analysis)
+GEOSPATIAL_PROPERTIES = {
+    "P625": "coordinate location",          # Center point
+    "P1332": "northernmost point",          # Bounding box north
+    "P1333": "southernmost point",          # Bounding box south
+    "P1334": "easternmost point",           # Bounding box east
+    "P1335": "westernmost point",           # Bounding box west
+    "P921": "main subject",                 # Link to geographic items
+    "P3896": "geoshape",                    # GeoJSON shape (polygon/line) on Commons
+}
+
+TEMPORAL_PROPERTIES = {
+    "P577": "publication date",             # Standard for articles
+    "P580": "start time",                   # Research period start
+    "P582": "end time",                     # Research period end
+    "P585": "point in time",                # Specific time reference
+}
+
+
+def count_scholarly_articles_with_coordinates() -> Optional[int]:
+    """
+    Count scholarly articles that have direct coordinate location (P625).
+    This is rare - OPTIMAP exports use this approach.
+    Uses the scholarly-specific Wikidata endpoint for better performance.
+    """
+    query = """
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P625 ?coord .
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_scholarly_articles_with_bounding_box() -> Optional[int]:
+    """
+    Count scholarly articles with bounding box properties (P1332-P1335).
+    OPTIMAP exports geographic extent using these properties.
+    Uses the scholarly-specific Wikidata endpoint for better performance.
+    """
+    query = """
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      { ?article wdt:P1332 ?north . }
+      UNION { ?article wdt:P1333 ?south . }
+      UNION { ?article wdt:P1334 ?east . }
+      UNION { ?article wdt:P1335 ?west . }
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_scholarly_articles_with_geographic_subject() -> Optional[int]:
+    """
+    Count scholarly articles where main subject (P921) links to an item
+    with coordinates. This is the recommended Wikidata approach for
+    indicating geographic relevance.
+    Uses the scholarly-specific Wikidata endpoint for better performance.
+    """
+    query = """
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P921 ?subject .
+      ?subject wdt:P625 ?coord .
+    }
+    """
+    result = query_wikidata(query, timeout=180, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_scholarly_articles_with_temporal_scope() -> Optional[int]:
+    """
+    Count scholarly articles with explicit temporal scope (P580/P582).
+    This indicates the time period studied, not publication date.
+    OPTIMAP exports use these for research period.
+    Uses the scholarly-specific Wikidata endpoint for better performance.
+    """
+    query = """
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      { ?article wdt:P580 ?start . }
+      UNION { ?article wdt:P582 ?end . }
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_scholarly_articles_with_start_time() -> Optional[int]:
+    """Count scholarly articles with P580 (start time) for study period."""
+    query = """
+    SELECT (COUNT(?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P580 ?start .
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_scholarly_articles_with_end_time() -> Optional[int]:
+    """Count scholarly articles with P582 (end time) for study period."""
+    query = """
+    SELECT (COUNT(?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P582 ?end .
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def get_scholarly_articles_with_coordinates_sample(limit: int = 50) -> List[Dict]:
+    """
+    Get sample of scholarly articles with direct coordinates.
+    Useful to understand what types of articles have P625.
+    """
+    query = f"""
+    SELECT ?article ?articleLabel ?coord ?journal ?journalLabel WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P625 ?coord .
+      OPTIONAL {{ ?article wdt:P1433 ?journal . }}
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    LIMIT {limit}
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return result["results"]["bindings"]
+    return []
+
+
+def count_scholarly_articles_with_geoshape() -> Optional[int]:
+    """
+    Count scholarly articles with geoshape (P3896).
+    P3896 stores GeoJSON polygon/line data via Wikimedia Commons Data namespace.
+    This is an alternative to point coordinates for representing study areas.
+    """
+    query = """
+    SELECT (COUNT(DISTINCT ?article) AS ?count) WHERE {
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P3896 ?geoshape .
+    }
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def count_journal_articles_with_geoshape(journal_qid: str) -> Optional[int]:
+    """
+    Count articles from a journal that have geoshape (P3896).
+    """
+    query = f"""
+    SELECT (COUNT(?article) AS ?count) WHERE {{
+      ?article wdt:P1433 wd:{journal_qid} .
+      ?article wdt:P3896 ?geoshape .
+    }}
+    """
+    result = query_wikidata(query, timeout=60, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return int(result["results"]["bindings"][0]["count"]["value"])
+    return None
+
+
+def get_scholarly_articles_with_geoshape_sample(limit: int = 20) -> List[Dict]:
+    """
+    Get sample of scholarly articles with geoshape (P3896).
+    Shows the GeoJSON file reference from Commons Data namespace.
+    """
+    query = f"""
+    SELECT ?article ?articleLabel ?geoshape ?journal ?journalLabel WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P3896 ?geoshape .
+      OPTIONAL {{ ?article wdt:P1433 ?journal . }}
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    LIMIT {limit}
+    """
+    result = query_wikidata(query, timeout=120, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return result["results"]["bindings"]
+    return []
+
+
+def get_geographic_subject_distribution(limit: int = 20) -> List[Dict]:
+    """
+    Get distribution of geographic main subjects for scholarly articles.
+    Shows which geographic entities are most commonly studied.
+    Uses the scholarly-specific Wikidata endpoint.
+    """
+    query = f"""
+    SELECT ?subject ?subjectLabel (COUNT(?article) AS ?count) WHERE {{
+      ?article wdt:P31 wd:Q13442814 .
+      ?article wdt:P921 ?subject .
+      ?subject wdt:P625 ?coord .
+      SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
+    }}
+    GROUP BY ?subject ?subjectLabel
+    ORDER BY DESC(?count)
+    LIMIT {limit}
+    """
+    result = query_wikidata(query, timeout=180, use_scholarly_endpoint=True)
+    if result and result.get("results", {}).get("bindings"):
+        return result["results"]["bindings"]
+    return []
+
+
+def get_geospatial_metadata_summary() -> Dict[str, Any]:
+    """
+    Get comprehensive summary of geospatial metadata on scholarly works.
+    Returns counts for different approaches to geographic annotation.
+    All queries use the scholarly-specific Wikidata endpoint.
+    """
+    summary = {
+        "query_timestamp": format_timestamp(),
+        "direct_coordinates_p625": count_scholarly_articles_with_coordinates(),
+        "bounding_box_p1332_p1335": count_scholarly_articles_with_bounding_box(),
+        "geographic_main_subject": count_scholarly_articles_with_geographic_subject(),
+        "temporal_scope_start_p580": count_scholarly_articles_with_start_time(),
+        "temporal_scope_end_p582": count_scholarly_articles_with_end_time(),
+    }
+    return summary
 
 
 def discover_partner_journals_wikidata() -> Dict[str, Any]:

@@ -63,10 +63,6 @@ jobs:
             echo "No data content changes (only timestamp updated)"
           fi
 
-      - name: Generate PDF report
-        if: steps.changes.outputs.data_changed == 'true'
-        run: make pdf
-
       - name: Commit and push changes
         if: steps.changes.outputs.data_changed == 'true'
         run: |
