@@ -4,22 +4,22 @@
   "creators": [
     {
       "name": "Nüst, Daniel",
-      "affiliation": "TU Dresden, Chair of Geoinformatics",
+      "affiliation": "TUD Dresden University of Technology, Chair of Geoinformatics",
       "orcid": "0000-0002-0024-5046"
     },
     {
       "name": "Niers, Tom",
-      "affiliation": "TU Dresden, Chair of Geoinformatics",
+      "affiliation": "TUD Dresden University of Technology, Chair of Geoinformatics",
       "orcid": "0000-0002-5746-8590"
     },
     {
       "name": "Hauschke, Christian",
-      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "affiliation": "TIB - Leibniz Information Centre for Science and Technology",
       "orcid": "0000-0003-2499-7741"
     },
     {
       "name": "Yücel, Gazi",
-      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "affiliation": "TIB - Leibniz Information Centre for Science and Technology",
       "orcid": "0000-0002-2013-6920"
     }
   ],
@@ -40,19 +40,9 @@
   "upload_type": "dataset",
   "access_right": "open",
   "language": "eng",
-  "funding": [
+  "grants": [
     {
-      "funder": {
-        "id": "04pz7b180",
-        "name": "Bundesministerium für Bildung und Forschung"
-      },
-      "award": {
-        "title": {
-          "en": "KOMET - Collaborative Enrichment of the Metadata Commons to Promote a Diverse Open Access Ecosystem",
-          "de": "KOMET - Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems"
-        },
-        "number": "16TOA039"
-      }
+      "id": "10.13039/501100002347::16TOA039"
     }
   ],
   "related_identifiers": [
@@ -65,12 +55,6 @@
     {
       "identifier": "https://projects.tib.eu/komet",
       "relation": "isDocumentedBy",
-      "resource_type": "other",
-      "scheme": "url"
-    },
-    {
-      "identifier": "https://projects.tib.eu/optimeta",
-      "relation": "continues",
       "resource_type": "other",
       "scheme": "url"
     },

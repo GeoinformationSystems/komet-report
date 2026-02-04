@@ -5,15 +5,16 @@ cff-version: 1.2.0
 title: "KOMET Reports: Open Metadata Evaluation"
 message: "If you use this dataset or software, please cite it as below."
 type: dataset
+doi: 10.5281/zenodo.18479191
 authors:
   - family-names: Nüst
     given-names: Daniel
     orcid: https://orcid.org/0000-0002-0024-5046
-    affiliation: Technische Universität Dresden
+    affiliation: TUD Dresden University of Technology
   - family-names: Niers
     given-names: Tom
     orcid: https://orcid.org/0000-0002-5746-8590
-    affiliation: Technische Universität Dresden
+    affiliation: TUD Dresden University of Technology
   - family-names: Hauschke
     given-names: Christian
     orcid: https://orcid.org/0000-0003-2499-7741

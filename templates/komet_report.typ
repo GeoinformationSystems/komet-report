@@ -89,23 +89,42 @@
 
 // Title page
 #align(center)[
-  #v(3cm)
+  #v(2cm)
   #text(size: 24pt, weight: "bold")[KOMET Project]
   #v(0.5cm)
   #text(size: 16pt)[Open Metadata Evaluation Report]
-  #v(1cm)
+  #v(0.8cm)
   #text(size: 12pt, fill: luma(100))[
     Tracking contributions to OpenCitations and Wikidata
   ]
-  #v(2cm)
+  #v(1.5cm)
+  #text(size: 11pt)[
+    Daniel Nüst#super[1], Tom Niers#super[1], Christian Hauschke#super[2], Gazi Yücel#super[2]
+  ]
+  #v(0.3cm)
+  #text(size: 9pt, fill: luma(120))[
+    #super[1]TUD Dresden University of Technology \
+    #super[2]TIB – Leibniz Information Centre for Science and Technology
+  ]
+  #v(1.5cm)
   #text(size: 11pt)[
     #datetime.today().display("[month repr:long] [year]")
   ]
+  #v(0.3cm)
+  #text(size: 9pt, fill: luma(120))[
+    Generated #datetime.today().display("[year]-[month]-[day]") from komet_evaluation.ipynb
+  ]
   #v(1cm)
-  #line(length: 50%, stroke: 0.5pt + luma(200))
-  #v(0.5cm)
-  #text(size: 10pt, fill: luma(100))[
-    Generated from komet_evaluation.ipynb
+  #line(length: 60%, stroke: 0.5pt + luma(200))
+  #v(0.8cm)
+  #text(size: 10pt, fill: luma(80))[
+    *Citation*
+  ]
+  #v(0.2cm)
+  #text(size: 9pt)[
+    Nüst, D., Niers, T., Hauschke, C., & Yücel, G. (2026). \
+    _KOMET Project – Open Metadata Evaluation Report_ \[Data set\]. Zenodo. \
+    #link("https://doi.org/10.5281/zenodo.18479191")
   ]
 ]
 

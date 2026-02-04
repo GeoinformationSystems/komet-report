@@ -1,5 +1,7 @@
 # KOMET Reports
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18479191.svg)](https://doi.org/10.5281/zenodo.18479191)
+
 Data reports on open metadata status in public knowledge bases by the KOMET project (<https://projects.tib.eu/komet>) on citation metadata and geometadata for scholarly works.
 This repository implements tracking of contributions to the open metadata commons from OJS-based journals using the structured citations feature (as of OJS 3.6, formerly the [citation manager plugin](https://github.com/TIBHannover/citationManager)) and the [geometadata plugin](https://github.com/TIBHannover/geoMetadata).
 
@@ -281,19 +283,36 @@ The CI workflow supports creating GitHub releases both automatically and manuall
 - `komet_report.pdf` - PDF version of the evaluation report
 - `index.html` - Interactive HTML version (also available via GitHub Pages)
 
+## Citation
+
+If you use this dataset or software, please cite it as:
+
+> Nüst, D., Niers, T., Hauschke, C., & Yücel, G. (2026). *KOMET Project - Open Metadata Evaluation Report* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18479191
+
+```bibtex
+@dataset{komet_report_2026,
+  author       = {Nüst, Daniel and Niers, Tom and Hauschke, Christian and Yücel, Gazi},
+  title        = {{KOMET Project - Open Metadata Evaluation Report}},
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18479191},
+  url          = {https://doi.org/10.5281/zenodo.18479191}
+}
+```
+
 ## Funding
 
-This work is funded by the German Federal Ministry of Education and Research (BMBFTR) under grant number `16TOA039`.
+This work is funded by the German Federal Ministry of Education and Research (BMBF) under grant number `16TOA039`.
 
-![BMFTR Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/BMFTR_Logo.svg/320px-BMFTR_Logo.svg.png)
+[![BMBF Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/BMBF_Logo.svg/320px-BMBF_Logo.svg.png)](https://www.bmbf.de/)
 
 The KOMET project (Förderkennzeichen 16TOA039) is part of the funding initiative "Förderung von Projekten zur Etablierung einer gelebten Open-Access-Kultur in der deutschen Forschungs- und Wissenschaftspraxis."
 
 ## License
 
-**Code**: CC-0 1.0
+**Code**: CC0-1.0
 
-**Report outputs**: CC-BY 4.0
+**Report outputs**: CC-BY-4.0
 
 ### External Data Sources
 
