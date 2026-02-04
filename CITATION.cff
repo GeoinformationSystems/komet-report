@@ -1,0 +1,62 @@
+# This CITATION.cff file was generated for use with Zenodo and GitHub citation features.
+# https://citation-file-format.github.io/
+
+cff-version: 1.2.0
+title: "KOMET Reports: Open Metadata Evaluation"
+message: "If you use this dataset or software, please cite it as below."
+type: dataset
+authors:
+  - family-names: Nüst
+    given-names: Daniel
+    orcid: https://orcid.org/0000-0002-0024-5046
+    affiliation: Technische Universität Dresden
+  - family-names: Niers
+    given-names: Tom
+    orcid: https://orcid.org/0000-0002-5746-8590
+    affiliation: Technische Universität Dresden
+  - family-names: Hauschke
+    given-names: Christian
+    orcid: https://orcid.org/0000-0003-2499-7741
+    affiliation: TIB – Leibniz Information Centre for Science and Technology
+  - family-names: Yücel
+    given-names: Gazi
+    orcid: https://orcid.org/0000-0002-2013-6920
+    affiliation: TIB – Leibniz Information Centre for Science and Technology
+repository-code: https://github.com/TIBHannover/komet-report
+url: https://projects.tib.eu/komet
+abstract: >-
+  Data reports on open metadata status in public knowledge bases by the KOMET project.
+  This repository implements tracking of contributions to the open metadata commons
+  from OJS-based journals using the structured citations feature and the geometadata plugin.
+  Target platforms are OpenCitations and Wikidata.
+keywords:
+  - open access
+  - open metadata
+  - citations
+  - OpenCitations
+  - Wikidata
+  - scholarly communication
+  - OJS
+  - Open Journal Systems
+  - geometadata
+  - KOMET
+  - OPTIMETA
+license: CC0-1.0
+funding:
+  - name: "German Federal Ministry of Education and Research (BMBF)"
+    award-number: "16TOA039"
+    award-title: "KOMET - Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems"
+identifiers:
+  - type: url
+    value: https://tibhannover.github.io/komet-report/
+    description: "Interactive HTML report (GitHub Pages)"
+references:
+  - type: software
+    title: "OJS Citation Manager Plugin"
+    repository-code: https://github.com/TIBHannover/citationManager
+  - type: software
+    title: "OJS GeoMetadata Plugin"
+    repository-code: https://github.com/TIBHannover/geoMetadata
+  - type: website
+    title: "OPTIMAP - Open Access Geospatial Publication Map"
+    url: https://optimap.science/

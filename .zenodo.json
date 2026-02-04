@@ -6,32 +6,21 @@
       "name": "Nüst, Daniel",
       "affiliation": "TU Dresden, Chair of Geoinformatics",
       "orcid": "0000-0002-0024-5046"
-    }
-  ],
-  "contributors": [
-    {
-      "name": "Yücel, Gazi",
-      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
-      "orcid": "0000-0002-2013-6920",
-      "type": "ProjectMember"
-    },
-    {
-      "name": "Hauschke, Christian",
-      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
-      "orcid": "0000-0003-2499-7741",
-      "type": "ProjectMember"
     },
     {
       "name": "Niers, Tom",
       "affiliation": "TU Dresden, Chair of Geoinformatics",
-      "orcid": "0000-0002-5746-8590",
-      "type": "ProjectMember"
+      "orcid": "0000-0002-5746-8590"
     },
     {
-      "name": "Aydin, Zeynep",
+      "name": "Hauschke, Christian",
       "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
-      "orcid": "0000-0002-4234-2717",
-      "type": "ProjectMember"
+      "orcid": "0000-0003-2499-7741"
+    },
+    {
+      "name": "Yücel, Gazi",
+      "affiliation": "TIB – Leibniz Information Centre for Science and Technology",
+      "orcid": "0000-0002-2013-6920"
     }
   ],
   "keywords": [
@@ -51,9 +40,19 @@
   "upload_type": "dataset",
   "access_right": "open",
   "language": "eng",
-  "grants": [
+  "funding": [
     {
-      "id": "10.13039/501100002347::16TOA039"
+      "funder": {
+        "id": "04pz7b180",
+        "name": "Bundesministerium für Bildung und Forschung"
+      },
+      "award": {
+        "title": {
+          "en": "KOMET - Collaborative Enrichment of the Metadata Commons to Promote a Diverse Open Access Ecosystem",
+          "de": "KOMET - Kollaborative Anreicherung der Metadatenallmende zur Förderung eines diversen Open-Access-Ökosystems"
+        },
+        "number": "16TOA039"
+      }
     }
   ],
   "related_identifiers": [
