@@ -7,6 +7,8 @@ This repository implements tracking of contributions to the open metadata common
 
 **Target platforms**: OpenCitations and Wikidata
 
+**View the report**: https://geoinformationsystems.github.io/komet-report/
+
 ## Methodology
 
 ### Goals
