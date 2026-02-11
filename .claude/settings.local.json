@@ -42,7 +42,8 @@
       "WebFetch(domain:git.rwth-aachen.de)",
       "WebFetch(domain:help.zenodo.org)",
       "WebFetch(domain:developers.zenodo.org)",
-      "WebFetch(domain:inveniordm.docs.cern.ch)"
+      "WebFetch(domain:inveniordm.docs.cern.ch)",
+      "WebFetch(domain:www.uni-muenster.de)"
     ]
   }
 }

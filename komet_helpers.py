@@ -54,10 +54,10 @@ COLLABORATION_PARTNERS = {
             "ojs_version": "3.3.0.14",
             "baseline_2022": {"wikidata_articles": 0, "wikidata_with_citations": 0, "openalex": 0}
         },
-        # --- WWU E-Journals Münster ---
+        # --- E-Journals Universität Münster ---
         {
             "name": "Free Neuropathology",
-            "partner": "WWU Münster",
+            "partner": "Universität Münster",
             "url": "https://www.uni-muenster.de/Ejournals/index.php/fnp",
             "wikidata_qid": "Q108455809",
             "ojs_version": "3.3.0.13",
@@ -65,7 +65,7 @@ COLLABORATION_PARTNERS = {
         },
         {
             "name": "Jahrbuch für Christliche Sozialwissenschaften",
-            "partner": "WWU Münster",
+            "partner": "Universität Münster",
             "url": "https://www.uni-muenster.de/Ejournals/index.php/jcsw",
             "wikidata_qid": "Q1678617",
             "ojs_version": "3.3.0.13",
@@ -179,14 +179,14 @@ COLLABORATION_PARTNERS = {
         {"name": "Formal Approaches to South Asian Languages", "partner": "KIM Konstanz"},
         {"name": "Journal of Historical Syntax", "partner": "KIM Konstanz"},
         {"name": "KIM Kompakt", "partner": "KIM Konstanz"},
-        {"name": "The Byzantine Review", "partner": "WWU Münster"},
-        {"name": "Mittelalter Digital", "partner": "WWU Münster"},
+        {"name": "The Byzantine Review", "partner": "Universität Münster"},
+        {"name": "Mittelalter Digital", "partner": "Universität Münster"},
         {"name": "Volcanica", "partner": "Independent", "url": "https://www.jvolcanica.org/"},
         {"name": "GEUS Bulletin", "partner": "Independent", "url": "https://geusbulletin.org"},
     ],
     "platforms": [
         {"name": "KIM - Universität Konstanz", "url": "https://www.kim.uni-konstanz.de/"},
-        {"name": "WWU E-Journals Münster", "url": "https://www.uni-muenster.de/Ejournals/"},
+        {"name": "E-Journals Universität Münster", "url": "https://www.uni-muenster.de/Ejournals/"},
         {"name": "e-journals Julius Kühn-Institut", "url": "https://ojs.openagrar.de"},
         {"name": "heiJOURNALS Heidelberg", "url": "https://journals.ub.uni-heidelberg.de"},
         {"name": "TIB Open Publishing", "url": "https://www.tib-op.org/"},
