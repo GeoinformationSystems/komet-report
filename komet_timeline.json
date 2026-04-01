@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created": "2026-01-22T11:30:11.762572Z",
-    "last_updated": "2026-03-01T06:37:55.174447Z",
+    "last_updated": "2026-04-01T07:12:19.728204Z",
     "version": "2.0",
     "description": "KOMET project evaluation metrics timeline"
   },
@@ -560,6 +560,10 @@
           {
             "t": "2026-01-30T10:03:07.723026Z",
             "v": 14
+          },
+          {
+            "t": "2026-04-01T07:10:54.580980Z",
+            "v": 19
           }
         ],
         "name": "P1343 Scholarly Articles",
@@ -639,6 +643,10 @@
             {
               "t": "2026-03-01T06:37:31.499305Z",
               "v": 7
+            },
+            {
+              "t": "2026-04-01T07:11:42.879691Z",
+              "v": 8
             }
           ],
           "name": "Start Time (P580)",
@@ -654,6 +662,10 @@
             {
               "t": "2026-03-01T06:37:31.499337Z",
               "v": 5
+            },
+            {
+              "t": "2026-04-01T07:11:42.879724Z",
+              "v": 6
             }
           ],
           "name": "End Time (P582)",
@@ -885,6 +897,19 @@
             ],
             "name": "OC Index Citations (itdb - inter- und tr)",
             "description": "Citations in OpenCitations Index for itdb - inter- und transdisziplinäre Bildung",
+            "unit": "count"
+          }
+        },
+        "Q1678617": {
+          "citations": {
+            "series": [
+              {
+                "t": "2026-04-01T07:11:23.832158Z",
+                "v": 0
+              }
+            ],
+            "name": "OC Index Citations (Jahrbuch für Christl)",
+            "description": "Citations in OpenCitations Index for Jahrbuch für Christliche Sozialwissenschaften",
             "unit": "count"
           }
         }

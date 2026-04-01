@@ -1,12 +1,12 @@
 {
-  "report_timestamp": "2026-03-01T06:37:30.363797Z",
+  "report_timestamp": "2026-04-01T07:11:40.694280Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
     "planned": "OpenAIRE"
   },
   "wikidata": {
-    "p1343_scholarly_count": 14,
+    "p1343_scholarly_count": 19,
     "p1343_limitation_note": "P1343 rarely used for scholarly articles; not suitable for tracking",
     "komet_provenance_items": 0,
     "partner_journals_tracked": 15,
@@ -26,7 +26,7 @@
     },
     "index": {
       "total_citations": 127,
-      "journals_with_issn": 13,
+      "journals_with_issn": 14,
       "journals_with_data": 1,
       "journal_stats": [
         {
@@ -44,8 +44,8 @@
         {
           "name": "Jahrbuch für Christliche Sozialwissenschaften",
           "qid": "Q1678617",
-          "issn": null,
-          "oc_citations": null
+          "issn": "2196-6265",
+          "oc_citations": 0
         },
         {
           "name": "Journal für Kulturpflanzen",
@@ -309,8 +309,8 @@
     "bounding_box_p1332_p1335": 1,
     "geoshape_p3896": 0,
     "geographic_main_subject": 5,
-    "temporal_start_p580": 7,
-    "temporal_end_p582": 5,
+    "temporal_start_p580": 8,
+    "temporal_end_p582": 6,
     "properties_tracked": {
       "P625": "coordinate location",
       "P1332": "northernmost point",
@@ -354,7 +354,7 @@
     {
       "name": "Jahrbuch für Christliche Sozialwissenschaften",
       "qid": "Q1678617",
-      "issn": null,
+      "issn": "2196-6265",
       "publisher": null,
       "publisher_source": null,
       "total_articles": 0,
