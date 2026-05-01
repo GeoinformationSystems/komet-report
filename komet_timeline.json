@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created": "2026-01-22T11:30:11.762572Z",
-    "last_updated": "2026-04-01T07:12:19.728204Z",
+    "last_updated": "2026-05-01T08:04:45.245553Z",
     "version": "2.0",
     "description": "KOMET project evaluation metrics timeline"
   },
@@ -593,6 +593,10 @@
             {
               "t": "2026-03-01T06:37:31.499139Z",
               "v": 47
+            },
+            {
+              "t": "2026-05-01T08:04:23.412952Z",
+              "v": 48
             }
           ],
           "name": "Direct Coordinates (P625)",

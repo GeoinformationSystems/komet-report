@@ -1,5 +1,5 @@
 {
-  "report_timestamp": "2026-04-01T07:11:40.694280Z",
+  "report_timestamp": "2026-05-01T08:04:22.736498Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
@@ -305,7 +305,7 @@
     }
   ],
   "geospatial": {
-    "direct_coordinates_p625": 47,
+    "direct_coordinates_p625": 48,
     "bounding_box_p1332_p1335": 1,
     "geoshape_p3896": 0,
     "geographic_main_subject": 5,
