@@ -1,12 +1,12 @@
 {
-  "report_timestamp": "2026-06-01T11:11:50.531830Z",
+  "report_timestamp": "2026-07-01T09:32:48.070487Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
     "planned": "OpenAIRE"
   },
   "wikidata": {
-    "p1343_scholarly_count": 19,
+    "p1343_scholarly_count": 20,
     "p1343_limitation_note": "P1343 rarely used for scholarly articles; not suitable for tracking",
     "komet_provenance_items": 0,
     "partner_journals_tracked": 15,
@@ -26,14 +26,14 @@
     },
     "index": {
       "total_citations": 127,
-      "journals_with_issn": 14,
+      "journals_with_issn": 12,
       "journals_with_data": 1,
       "journal_stats": [
         {
           "name": "Journal of South Asian Linguistics",
           "qid": "Q122948152",
-          "issn": "1947-8232",
-          "oc_citations": 0
+          "issn": null,
+          "oc_citations": null
         },
         {
           "name": "Free Neuropathology",
@@ -50,8 +50,8 @@
         {
           "name": "Journal für Kulturpflanzen",
           "qid": "Q1455822",
-          "issn": "1867-0911",
-          "oc_citations": 0
+          "issn": null,
+          "oc_citations": null
         },
         {
           "name": "VITIS - Journal of Grapevine Research",
@@ -305,7 +305,7 @@
     }
   ],
   "geospatial": {
-    "direct_coordinates_p625": 55,
+    "direct_coordinates_p625": 54,
     "bounding_box_p1332_p1335": 1,
     "geoshape_p3896": 0,
     "geographic_main_subject": 5,
@@ -367,9 +367,9 @@
     {
       "name": "Journal für Kulturpflanzen",
       "qid": "Q1455822",
-      "issn": "1867-0911",
-      "publisher": "Eugen Ulmer Verlag",
-      "publisher_source": "wikidata",
+      "issn": null,
+      "publisher": null,
+      "publisher_source": null,
       "total_articles": 0,
       "with_coordinates": 0,
       "with_bounding_box": 0,
