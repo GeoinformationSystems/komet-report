@@ -1,12 +1,12 @@
 {
-  "report_timestamp": "2026-07-01T09:32:48.070487Z",
+  "report_timestamp": "2026-08-01T08:06:50.140157Z",
   "platform_priority": {
     "primary": "OpenCitations",
     "secondary": "Wikidata (monitoring only)",
     "planned": "OpenAIRE"
   },
   "wikidata": {
-    "p1343_scholarly_count": 20,
+    "p1343_scholarly_count": 18,
     "p1343_limitation_note": "P1343 rarely used for scholarly articles; not suitable for tracking",
     "komet_provenance_items": 0,
     "partner_journals_tracked": 15,
@@ -25,21 +25,21 @@
       ]
     },
     "index": {
-      "total_citations": 127,
-      "journals_with_issn": 12,
+      "total_citations": 160,
+      "journals_with_issn": 14,
       "journals_with_data": 1,
       "journal_stats": [
         {
           "name": "Journal of South Asian Linguistics",
           "qid": "Q122948152",
-          "issn": null,
-          "oc_citations": null
+          "issn": "1947-8232",
+          "oc_citations": 0
         },
         {
           "name": "Free Neuropathology",
           "qid": "Q108455809",
           "issn": "2699-4445",
-          "oc_citations": 127
+          "oc_citations": 160
         },
         {
           "name": "Jahrbuch für Christliche Sozialwissenschaften",
@@ -50,8 +50,8 @@
         {
           "name": "Journal für Kulturpflanzen",
           "qid": "Q1455822",
-          "issn": null,
-          "oc_citations": null
+          "issn": "1867-0911",
+          "oc_citations": 0
         },
         {
           "name": "VITIS - Journal of Grapevine Research",
@@ -305,12 +305,12 @@
     }
   ],
   "geospatial": {
-    "direct_coordinates_p625": 54,
+    "direct_coordinates_p625": 55,
     "bounding_box_p1332_p1335": 1,
     "geoshape_p3896": 0,
     "geographic_main_subject": 5,
-    "temporal_start_p580": 8,
-    "temporal_end_p582": 6,
+    "temporal_start_p580": 15,
+    "temporal_end_p582": 13,
     "properties_tracked": {
       "P625": "coordinate location",
       "P1332": "northernmost point",
@@ -367,9 +367,9 @@
     {
       "name": "Journal für Kulturpflanzen",
       "qid": "Q1455822",
-      "issn": null,
-      "publisher": null,
-      "publisher_source": null,
+      "issn": "1867-0911",
+      "publisher": "Eugen Ulmer Verlag",
+      "publisher_source": "wikidata",
       "total_articles": 0,
       "with_coordinates": 0,
       "with_bounding_box": 0,
